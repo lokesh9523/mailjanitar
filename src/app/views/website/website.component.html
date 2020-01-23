@@ -1,52 +1,70 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Mail Janitar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto justify-content-right">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Register <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
-          </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+<section id="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand mb-0" href="#">Mail Janitar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> 
+        <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto main-menu">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink = "/website">Home <span class="sr-only">(current)</span></a>
+              </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink = "/register">Register <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link"routerLink = "/login">Login <span class="sr-only">(current)</span></a>
+              </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li> -->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+          </ul>
+          <!-- <div class="justify-content-end">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </div> -->
+        </div>
+      </nav>
+  </section>
+  <section id="carousel-section">
+      <carousel class="carousel-inner">
+          <slide class="carousel-item">
+            <img src="../../../assets/img/bright-blue-technology-motion-background-with-arrows-and-squares-video-corporate-animation-ultra-hd-4k-3840x2160_sdh8wvqz__F0000.png" alt="firstSlide"class="d-block w-100" height="500">
+          </slide>
+          <slide class="carousel-item">
+            <img src="../../../assets/img/technology-halftone-modern-background_1409-856.jpg" alt="secondSlide" class="d-block w-100" height="500">
+          </slide>
+          <slide class="carousel-item">
+            <img src="../../../assets/img/technology-halftone-modern-background_14096.jpg" alt="thirdSlide" class="d-block w-100" height="500">
+          </slide>
+        </carousel>
+  </section>
+  <section id="welcome-note">
+      <div class="jumbotron jumbotron-fluid">
+          <div class="container text-center">
+            <h1 class="display-4">Welcome!!</h1>
+            <p class="lead">Mail Janitar</p>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
-      </ul>
-      <!-- <div class="justify-content-end">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </div> -->
+        </div>
+  </section>
+  
+  
+  <section id="footer" class="footer bg-dark py-2">
+    <div class="text-blk">
+       @All rights reserved with Blocmatrix
     </div>
-  </nav>
-  <carousel>
-    <slide>
-      <img src="../../../assets/img/bright-blue-technology-motion-background-with-arrows-and-squares-video-corporate-animation-ultra-hd-4k-3840x2160_sdh8wvqz__F0000.png" alt="first slide" style="display: block; width: 100%;">
-    </slide>
-    <slide>
-      <img src="../../../assets/img/technology-halftone-modern-background_1409-856.jpg" alt="second slide" style="display: block; width: 100%;">
-    </slide>
-    <slide>
-      <img src="../../../assets/img/technology-halftone-modern-background_14096.jpg" alt="third slide" style="display: block; width: 100%;">
-    </slide>
-  </carousel>
-  <footer>
-      tetsing
-  </footer>
+  </section>

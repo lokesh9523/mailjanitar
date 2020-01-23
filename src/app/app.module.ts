@@ -44,7 +44,10 @@ import { ChartsModule } from 'ng2-charts';;
 import {TableModule, CellEditor} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import { CarouselModule } from 'ngx-bootstrap';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ApiService } from './api.service';
+import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
@@ -61,9 +64,10 @@ import { CarouselModule } from 'ngx-bootstrap';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     CarouselModule.forRoot(),
+    ModalModule.forRoot(),
     ChartsModule,
     TableModule,
-    DropdownModule
+    DropdownModule,FormsModule, ReactiveFormsModule,HttpClientModule
     // DialogModule
   ],
   declarations: [
@@ -75,7 +79,7 @@ import { CarouselModule } from 'ngx-bootstrap';
     RegisterComponent,
     WebsiteComponent
   ],
-  providers: [
+  providers: [ApiService
   //   {
   //   provide: LocationStrategy,
   //   useClass: HashLocationStrategy

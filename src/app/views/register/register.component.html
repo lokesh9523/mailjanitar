@@ -1,3 +1,46 @@
+<section id="header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand mb-0" href="#">Mail Janitar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+      <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto main-menu">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink = "/website">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink = "/register">Register <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link"routerLink = "/login">Login <span class="sr-only">(current)</span></a>
+            </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <!-- <div class="justify-content-end">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div> -->
+      </div>
+    </nav>
+</section>
+
 <div class="app-body">
   <main class="main d-flex align-items-center">
     <div class="container">
@@ -5,37 +48,50 @@
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
             <div class="card-body p-4">
-              <form>
+              <form [formGroup]="UserFormGroup">
                 <h1>Register</h1>
                 <p class="text-muted">Create your account</p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Username" autocomplete="username" required>
+                  <input type="text" class="form-control" placeholder="name" [class.invalid]="!UserFormGroup.controls.name.valid && (UserFormGroup.controls.name.dirty || onsubmit)" autocomplete="name" formControlName="name">
+                  
                 </div>
+                <div *ngIf="!UserFormGroup.controls.username.valid && (UserFormGroup.controls.username.dirty || onsubmit)"><p style="color: red;">please enter username</p></div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Username" [class.invalid]="!UserFormGroup.controls.username.valid && (UserFormGroup.controls.username.dirty || onsubmit)" autocomplete="username" formControlName="username">
+                  
+                </div>
+                <div *ngIf="!UserFormGroup.controls.username.valid && (UserFormGroup.controls.username.dirty || onsubmit)"><p style="color: red;">please enter username</p></div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Email" autocomplete="email" required>
+                  <input type="text" class="form-control" placeholder="Email" [class.invalid]="!UserFormGroup.controls.email.valid && (UserFormGroup.controls.email.dirty || onsubmit)" autocomplete="email" formControlName="email">
                 </div>
+                <div *ngIf="!UserFormGroup.controls.email.valid && (UserFormGroup.controls.email.dirty || onsubmit)"><p style="color: red;">Please enter the email</p></div>
+                <!-- <div *ngIf="!UserFormGroup.controls.email.valid && UserFormGroup.controls.email.touched " sty><p style="color: red;">Please enter the valid email</p></div> -->
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password" autocomplete="new-password" required>
+                  <input type="password" class="form-control" placeholder="Password" autocomplete="new-password" [class.invalid]="!UserFormGroup.controls.password.valid && (UserFormGroup.controls.password.dirty || onsubmit)" formControlName="password">
                 </div>
-                <div class="input-group mb-4">
+                <div *ngIf="!UserFormGroup.controls.password.valid && (UserFormGroup.controls.password.dirty || onsubmit)"><p style="color: red;">Please enter the password</p></div>
+                <!-- <div class="input-group mb-4">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
                   <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password" required>
-                </div>
-                <button type="button" class="btn btn-block btn-success">Create Account</button>
+                </div> -->
+                <button type="button" class="btn btn-block btn-success" (click) = "OnReqister()">Create Account</button>
               </form>
             </div>
-            <div class="card-footer p-4">
+            <!-- <div class="card-footer p-4">
               <div class="row">
                 <div class="col-6">
                   <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
@@ -44,10 +100,15 @@
                   <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
   </main>
 </div>
+<section id="footer" class="footer bg-dark py-2">
+  <div class="text-blk">
+     @All rights reserved with Blocmatrix
+  </div>
+</section>
