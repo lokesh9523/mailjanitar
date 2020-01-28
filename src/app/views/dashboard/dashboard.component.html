@@ -23,7 +23,7 @@
 
 <div class="row" style="margin-bottom: 20px;" *ngIf="showupload">
     <div class="col-sm-6" ><a routerLink="/buy-credits"><button type="button" class="btn btn-primary">Add Credits</button></a></div>
-    <div class="col-sm-6"><a routerLink="/upload"><button type="button" class="btn btn-primary">Upload</button></a></div>
+    <div class="col-sm-6 "><a routerLink="/upload"><button type="button" class="btn btn-primary" style="float: right;">Upload</button></a></div>
 </div>
 <div style="text-align: center;padding-bottom: 20px;">
 
@@ -60,9 +60,9 @@
                         <i *ngIf = "rowData['col.field'] == 100"class="fa fa-download"></i>
                         <p *ngIf = "rowData['col.field'] != 100">{{rowData[col.field]}}</p>
                         <!-- <p><ngb-progressbar type="success" value = "rowData['col.field']    "></ngb-progressbar></p> -->
-                        <div class="progress">
+                        <!-- <div class="progress">
                             <div class="progress-bar" type="success" role="progressbar" [ngStyle]="{width: rowData['col.field']}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
+                          </div> -->
                         <!-- <i *ngIf = "{{rowData['col.field']}} != 100"class="fa fa-download"></i> -->
                     </span>
                     <span *ngIf="idx==4">

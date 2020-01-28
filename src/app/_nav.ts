@@ -2,7 +2,7 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'MyList',
+    name: 'My List',
     url: '/MyList'
     //   variant: 'info',
     //   text: 'NEW'

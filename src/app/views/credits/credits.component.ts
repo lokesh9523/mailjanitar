@@ -29,9 +29,11 @@ export class CreditComponent implements OnInit {
   }
   addCredits(){
 if(this.credits == '' || this.credits == 0){
-  this.message = "please afte the amount";
+  this.message = "please enter the ether";
 }else{
-  let data = {"amount":this.credits,"login_id":this.localstorageservice.get('login_id')}
+  let credit = +this.credits + this.localstorageservice.get('credits');
+  console.log(credit)
+  let data = {"amount":credit,"login_id":this.localstorageservice.get('login_id')}
     this.apiservice.UpdatePartner(data).subscribe((updateddata:any)=>{
       if(updateddata){
         this.localstorageservice.set('credits',updateddata.data.amount);
