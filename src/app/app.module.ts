@@ -48,7 +48,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardService } from './auth/auth.guard';
+import { LocalStorageService } from 'ngx-store';
 // import {DialogModule} from 'primeng/dialog';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   imports: [
@@ -79,7 +82,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     WebsiteComponent
   ],
-  providers: [ApiService
+  providers: [ApiService,
+    AuthGuardService,
+    LocalStorageService,DatePipe
   //   {
   //   provide: LocationStrategy,
   //   useClass: HashLocationStrategy

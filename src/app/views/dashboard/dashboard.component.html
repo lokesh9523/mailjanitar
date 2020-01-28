@@ -1,5 +1,5 @@
 
-<p-table [columns]="cols" [value]="tabledata">
+<!-- <p-table [columns]="cols" [value]="tabledata">
   <ng-template pTemplate="header" let-columns>
       <tr>
           <th *ngFor="let col of columns">
@@ -13,10 +13,79 @@
           <td *ngFor="let col of columns">
               {{rowData[col.field]}}
           </td>
-          <td>
+          <td> -->
               <!-- <button pButton class="pi pi-trash" (click)="selectCarWithButton(rowData)"></button> -->
-              <i class="pi pi-trash"></i>
+              <!-- <i class="pi pi-trash"></i>
           </td>
       </tr>
   </ng-template>
+</p-table> -->
+
+<div class="row" style="margin-bottom: 20px;" *ngIf="showupload">
+    <div class="col-sm-6" ><a routerLink="/buy-credits"><button type="button" class="btn btn-primary">Add Credits</button></a></div>
+    <div class="col-sm-6"><a routerLink="/upload"><button type="button" class="btn btn-primary">Upload</button></a></div>
+</div>
+<div style="text-align: center;padding-bottom: 20px;">
+
+    <span ><b>Uploaded New List</b></span>
+</div>
+<p-table #dt1 [columns]="cols" [value]="tabledata" [paginator]="true" [rows]="3" dataKey="vin"
+    [resizableColumns]="true" [reorderableColumns]="true" >
+    <ng-template pTemplate="header" let-columns >
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn>
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+            <!-- <th>Action <p-sortIcon [field]=""></p-sortIcon></th> -->
+            <!-- <th>Edit 
+            </th> -->
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-fluid">
+                <input pInputText type="text" 
+                    (input)="dt1.filter($event.target.value, col.field, 'contains')"
+                    [value]="dt1.filters[col.field]?.value">
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns let idx = index">
+                <div style="text-align:center"> 
+                    <span *ngIf="idx!=4&& idx!=3">
+                        {{rowData[col.field]}}
+                    </span>
+                    <span *ngIf="idx==3">
+                        <i *ngIf = "rowData['col.field'] == 100"class="fa fa-download"></i>
+                        <p *ngIf = "rowData['col.field'] != 100">{{rowData[col.field]}}</p>
+                        <!-- <p><ngb-progressbar type="success" value = "rowData['col.field']    "></ngb-progressbar></p> -->
+                        <div class="progress">
+                            <div class="progress-bar" type="success" role="progressbar" [ngStyle]="{width: rowData['col.field']}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        <!-- <i *ngIf = "{{rowData['col.field']}} != 100"class="fa fa-download"></i> -->
+                    </span>
+                    <span *ngIf="idx==4">
+                        <!-- <button pButton class="pi pi-trash" (click)="selectCarWithButton(rowData)"></button> -->
+                         <i class="pi pi-trash" (click)="selectCarWithButton(rowData)" style="cursor: pointer;"></i>
+    
+                    </span>
+                </div>
+                
+            </td>
+        </tr>
+        <!-- <tr>
+            <td *ngFor="let col of columns let idx=index">
+                <div style="text-align:center">
+                    <span *ngIf="idx == 0" >
+                        <span ><a  href="/partners/edit/{{rowData.id}}">{{rowData[col.field]}}</a></span> 
+                     </span>
+               
+                <span *ngIf=" idx!=0">
+                    {{rowData[col.field]}}
+                </span>
+            </div>
+         
+        </tr> -->
+    </ng-template>
 </p-table>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import {ApiService} from './../../api.service';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'ngx-store';
+import { DatePipe } from '@angular/common';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -9,20 +11,41 @@ import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 export class DashboardComponent implements OnInit {
   cols = [
     {header:"Name",field:"name"},
-    { header: "Size", field: "size" },
-    { header: "Upload Date", field: "upload_date" },
-    { header: "process", field: "process" },
-    
+    { header: "Size", field: "file_size" },
+    { header: "Upload Date", field: "date_created" },
+    { header: "process", field: "status" },
+    {header:"action"}
     //{header:""}
   ];
   tabledata = [];
-  
-  constructor() {
+  showupload:boolean = false;
+  constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe, ) {
     }
   ngOnInit() {
-    // generate random values for mainChart
-  this.tabledata= [{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"},{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"},{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"}
-,{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"},{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"}];
-
+   this.PartnerData();
+    
+  }
+  PartnerData(){
+    this.apiservice.getPartnerData(this.localstorage.get('login_id')).subscribe((data:any)=>{
+      if(data.data.length){
+        data.data.forEach(element => {
+          if(element.date_created){
+            element.date_created = this.datepipe.transform(element.date_created,"yyyy-MM-dd ");
+          }
+        });
+        this.tabledata = data.data;
+      }else{
+        this.showupload=true;
+      }
+    })
+  }
+  selectCarWithButton(rowdata){
+    console.log(rowdata);
+    this.apiservice.DeletePartnerdata(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
+      if(data.data){
+        alert("Data has been deleted sucessfully");
+        this.PartnerData();
+      }
+    })
   }
 }
