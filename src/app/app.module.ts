@@ -52,6 +52,8 @@ import { AuthGuardService } from './auth/auth.guard';
 import { LocalStorageService } from 'ngx-store';
 // import {DialogModule} from 'primeng/dialog';
 import {DatePipe} from '@angular/common';
+import {MatDialogModule,MatButtonModule} from "@angular/material";
+import { MyDialogComponent } from './views/website/my-dialog.component';
 
 @NgModule({
   imports: [
@@ -70,7 +72,9 @@ import {DatePipe} from '@angular/common';
     ModalModule.forRoot(),
     ChartsModule,
     TableModule,
-    DropdownModule,FormsModule, ReactiveFormsModule,HttpClientModule
+    DropdownModule,FormsModule, ReactiveFormsModule,HttpClientModule,
+    MatDialogModule,
+    MatButtonModule
     // DialogModule
   ],
   declarations: [
@@ -80,7 +84,13 @@ import {DatePipe} from '@angular/common';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    WebsiteComponent
+    WebsiteComponent,
+
+    MyDialogComponent
+  ],
+  entryComponents:[
+
+    MyDialogComponent
   ],
   providers: [ApiService,
     AuthGuardService,
