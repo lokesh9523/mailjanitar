@@ -53,8 +53,6 @@ import { LocalStorageService } from 'ngx-store';
 // import {DialogModule} from 'primeng/dialog';
 import {DatePipe} from '@angular/common';
 import {MatDialogModule,MatButtonModule} from "@angular/material";
-import { MyDialogComponent } from './views/website/my-dialog.component';
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -85,13 +83,8 @@ import { MyDialogComponent } from './views/website/my-dialog.component';
     LoginComponent,
     RegisterComponent,
     WebsiteComponent,
-
-    MyDialogComponent
   ],
-  entryComponents:[
 
-    MyDialogComponent
-  ],
   providers: [ApiService,
     AuthGuardService,
     LocalStorageService,DatePipe
