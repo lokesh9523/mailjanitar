@@ -20,7 +20,7 @@ export class WebsiteComponent {
   @ViewChild(ModalDirective) modal: ModalDirective;
   constructor(private apiservice:ApiService,public formbuilder:FormBuilder,private router:Router,public localstorage:LocalStorageService) { 
     this.UserFormGroup = this.formbuilder.group({
-      name:['',Validators.required],
+      // name:['',Validators.required],
       username:['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]

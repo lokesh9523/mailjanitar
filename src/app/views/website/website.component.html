@@ -1,6 +1,6 @@
 <section id="header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white" style="z-index: 999">
-    <a class="navbar-brand mb-0" href="#">Mail Janitar</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="navbar-brand mb-0" href="#">Mail Janitor</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
       (click)="toggleNavbar()">
@@ -23,10 +23,10 @@
     </div>
   </nav>
 </section>
-<section id="carousel-section" class="mt-n5">
+<section id="carousel-section">
   <carousel class="carousel-inner">
     <slide class="carousel-item">
-      <img src="../../../assets/img/email_Delivery_png.png" alt="firstSlide" class="d-block w-100">
+      <img src="../../../assets/img/email_Delivery trial4 PNG.png" alt="firstSlide" class="d-block w-100" style="height: 87vh">
       <div class="carousel-caption d-none d-md-block">
         <!-- <h3>Improve Your Email Delivery</h3> -->
         <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
@@ -34,14 +34,14 @@
     </slide>
     <slide class="carousel-item">
       <img src="../../../assets/img/spamtraps trial2_png.png" alt="secondSlide"
-        class="d-block w-100">
+        class="d-block w-100" style="height: 87vh">
       <div class="carousel-caption d-none d-md-block">
         <!-- <h3>Remove Known Spametraps and Other Bad Emails</h3> -->
         <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       </div>
     </slide>
     <slide class="carousel-item">
-      <img src="../../../assets/img/delivery_result_png.png" alt="thirdSlide" class="d-block w-100">
+      <img src="../../../assets/img/delivery_result_png.png" alt="thirdSlide" class="d-block w-100" style="height: 87vh">
       <div class="carousel-caption d-none d-md-block">
         <!-- <h3>Better Delivery is Better Result</h3> -->
         <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
@@ -49,14 +49,14 @@
     </slide>
   </carousel>
 </section>
-<section id="welcome-note">
+<!-- <section id="welcome-note">
   <div class="jumbotron jumbotron-fluid">
     <div class="container text-center">
-      <!-- <h1 class="display-4">Welcome!!</h1>
+       <h1 class="display-4">Welcome!!</h1>
             <p class="lead">Mail Janitar</p> -->
-    </div>
+    <!-- </div>
   </div>
-</section>
+</section> -->
 
 
 <section id="footer" class="footer bg-dark py-2">
@@ -190,7 +190,7 @@
         <form #myform [formGroup]="UserFormGroup">
           <h1>Register</h1>
           <p class="text-muted">Create your account</p>
-          <div class="input-group mb-3">
+          <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="icon-user"></i></span>
             </div>
@@ -201,7 +201,7 @@
           </div>
           <div *ngIf="!UserFormGroup.controls.name.valid  && (UserFormGroup.controls.name.dirty || onsubmit)">
             <p style="color: red;">please enter name</p>
-          </div>
+          </div> -->
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="icon-user"></i></span>
