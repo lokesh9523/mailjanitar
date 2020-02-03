@@ -52,7 +52,9 @@ export class UploadComponent implements OnInit {
                     alert("file uploaded sucessfully");
                     this.router.navigateByUrl('/MyList');
                 }
-            })
+            }, error => {
+                alert(error.error.data)
+              });
         }
         
     }

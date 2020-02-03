@@ -4,6 +4,7 @@ import {ApiService} from './../../api.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-store';
 import { DatePipe } from '@angular/common';
+import { type } from 'os';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -18,14 +19,17 @@ export class DashboardComponent implements OnInit {
     //{header:""}
   ];
   tabledata = [];
+  credits = '';
   showupload:boolean = false;
   constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe, ) {
     }
   ngOnInit() {
    this.PartnerData();
+   this.credits = this.localstorage.get('credits');
     
   }
   PartnerData(){
+    this.tabledata = [];
     this.apiservice.getPartnerData(this.localstorage.get('login_id')).subscribe((data:any)=>{
       if(data.data.length){
         data.data.forEach(element => {
@@ -40,12 +44,25 @@ export class DashboardComponent implements OnInit {
     })
   }
   selectCarWithButton(rowdata){
-    console.log(rowdata);
-    this.apiservice.DeletePartnerdata(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
-      if(data.data){
-        alert("Data has been deleted sucessfully");
-        this.PartnerData();
-      }
-    })
+    if(rowdata.file_size >= this.localstorage.get('credits')){
+      alert('insuffients funds');
+    }else{
+      let credit =  this.localstorage.get('credits') - rowdata.file_size;
+      let data = {"amount":credit,"login_id":this.localstorage.get('login_id')}
+        this.apiservice.UpdatePartner(data).subscribe((updateddata:any)=>{
+          if(updateddata){
+            this.localstorage.set('credits',updateddata.data.amount);
+            this.apiservice.count = updateddata.data.amount;
+          this.apiservice.DeletePartnerdata(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
+          if(data.data){
+            alert("Data has been deleted sucessfully");
+            this.PartnerData();
+          }
+        })
+          }
+        })
+    }
+    
+    
   }
 }
