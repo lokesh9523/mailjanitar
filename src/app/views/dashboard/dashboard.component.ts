@@ -4,7 +4,6 @@ import {ApiService} from './../../api.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-store';
 import { DatePipe } from '@angular/common';
-import { type } from 'os';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -45,7 +44,7 @@ export class DashboardComponent implements OnInit {
   }
   selectCarWithButton(rowdata){
     if(rowdata.file_size >= this.localstorage.get('credits')){
-      alert('insuffients funds');
+      alert('Insuffients Funds!!!');
     }else{
       let credit =  this.localstorage.get('credits') - rowdata.file_size;
       let data = {"amount":credit,"login_id":this.localstorage.get('login_id')}
