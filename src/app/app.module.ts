@@ -27,7 +27,6 @@ const APP_CONTAINERS = [
 ];
 
 import {
-  AppAsideModule,
   AppBreadcrumbModule,
   AppHeaderModule,
   AppFooterModule,
@@ -58,7 +57,6 @@ import {MatDialogModule,MatButtonModule} from "@angular/material";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,

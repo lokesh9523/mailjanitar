@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { ApiService } from '../../api.service';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'ngx-store';
+import { DatePipe } from '@angular/common';
 
 @Component({
   templateUrl: 'account.component.html'
@@ -16,13 +20,17 @@ export class AccountComponent implements OnInit {
     //{header:""}
   ];
   tabledata = [];
-  
-  constructor() {
+  user;
+  constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe,) {
     }
   ngOnInit() {
-    // generate random values for mainChart
-  this.tabledata= [{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"},{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"},{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"}
-,{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"},{"name":"lokesh","size":"100000","upload_date":"20/02/2019","process":"95%"}];
-
-  }
+  this.apiservice.getPartnerDetails(this.localstorage.get('login_id')).subscribe((data:any)=>{
+    if(data){
+      this.user = data.data;
+      console.log(this.user);
+    }
+  },error=>{
+    alert(error.error.data);
+  })
+}
 }

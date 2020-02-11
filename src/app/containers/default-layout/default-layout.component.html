@@ -1,36 +1,28 @@
-<app-header style="height:60px"
-  
+<app-header style="height:60px" 
   [fixed]="true"
   [navbarBrandFull]="{ src: 'assets/blocmatrix_logo.png',  height: 40,alt: 'Anitra'}"
   [navbarBrandMinimized]="{ src: 'assets/blocmatrix_logo.png', width: 30, height: 30,alt: 'Anitra'}"
-  [sidebarToggler]="'lg'"
+  [sidebarToggler]="'sm'"
+  [mobileAsideMenuToggler]="false"
   [asideMenuToggler]="false" >
-  <ul class="nav navbar-nav d-md-down-none">
-    <li class="nav-item px-3">
-      <!-- <a class="nav-link" href="#">Dashboard</a> -->
-    </li>
-    <li class="nav-item px-3">
-      <!-- <a class="nav-link" href="#">Users</a> -->
-    </li>
-    <li class="nav-item px-3">
-      <!-- <a class="nav-link" href="#">Settings</a> -->
-    </li>
-  </ul>
+  <div class="flow-items">
+    <div class="d-inline p-2">Credits: <span class="badge badge-pill badge-danger">{{apiService.count}}</span></div>
+    <!-- <div class="d-inline p-2"><i class="icon-user"> </i><span>{{name}}</span></div> -->
+  </div>
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item d-md-down-none">
-      <!-- <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a> -->
+    <!-- <li class="nav-item d-sm-down-none">
+      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
     </li>
-    <li class="nav-item d-md-down-none">
-      <!-- <a class="nav-link" href="#"><i class="icon-list"></i></a> -->
+    <li class="nav-item d-sm-down-none">
+      <a class="nav-link" href="#"><i class="icon-list"></i></a>
     </li>
-    <li class="nav-item d-md-down-none">
-      <p >credits:{{apiService.count}}</p>
-    </li>
+    <li class="nav-item d-sm-down-none">
+      <p class="nav-link">credits:{{apiService.count}}</p>
+    </li> -->
     <li class="nav-item dropdown" dropdown placement="bottom right">
-      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
-        <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
-      </a>
-      <p>{{name}}</p>
+      <a class="nav-link  icon-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+        <!-- <img src="assets/img/avatars/6.jpg" class="icon-user" alt="admin@bootstrapmaster.com"/> -->
+      </a><span>{{name}}</span>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <!-- <div class="dropdown-header text-center"><strong>Account</strong></div> -->
         <!-- <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
@@ -50,9 +42,9 @@
   </ul>
 </app-header>
 <div class="app-body">
-  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized" (minimizedChange)="toggleMinimize($event)">
+  <app-sidebar #appSidebar [fixed]="true" [display]="'sm'" [minimized]="sidebarMinimized" (minimizedChange)="toggleMinimize($event)">
     <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav>
-    <!-- <app-sidebar-minimizer></app-sidebar-minimizer> -->
+    <app-sidebar-minimizer></app-sidebar-minimizer>
   </app-sidebar>
   <!-- Main content -->
   <main class="main">

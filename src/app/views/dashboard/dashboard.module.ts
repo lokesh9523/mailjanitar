@@ -7,7 +7,9 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { TableModule } from 'primeng/table';
-
+import {DialogModule} from 'primeng/dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   imports: [
@@ -17,7 +19,10 @@ import { TableModule } from 'primeng/table';
     BsDropdownModule,
     TableModule,
     CommonModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    ModalModule.forRoot(),
+    DialogModule,
+    ProgressBarModule
   ],
   declarations: [ DashboardComponent ]
 })

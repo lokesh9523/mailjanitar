@@ -16,6 +16,7 @@ export class WebsiteComponent {
   Username: string = '';
   Password: string = '';
   message;
+  message1;
   navbarOpen = false;
   @ViewChild(ModalDirective) modal: ModalDirective;
   constructor(private apiservice:ApiService,public formbuilder:FormBuilder,private router:Router,public localstorage:LocalStorageService) { 
@@ -38,9 +39,13 @@ OnReqister(){
          this.UserFormGroup.reset();
         this.modal.hide();
         this.onsubmit = false;
+        this.message1 = '';
         // this.router.navigateByUrl('/login');
       }
-    })
+    }, error => {
+      this.message1 = error.error.data
+
+    });
   }
 }
 OnLogin(){
@@ -56,6 +61,7 @@ OnLogin(){
         this.localstorage.set('credits',data.data.partner_detail.amount);
         this.apiservice.count = data.data.partner_detail.amount;
         this.router.navigateByUrl('/MyList');
+        this.message = '';
       }
     }, error => {
         this.message = "Username or Password Invalid";

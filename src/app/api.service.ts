@@ -42,4 +42,8 @@ count;
     let headers = new HttpHeaders();
     return this.httpClient.delete(`${this.API_URL}/partner/`+ loginId +`/data/`+dataId, { headers: headers });
   }
+  getPartnerDetails(loginId){
+    let headers = new HttpHeaders();
+    return this.httpClient.get(`${this.API_URL}/partner/`+loginId+`/partner_details`, { headers: headers });
+  }
 }
