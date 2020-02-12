@@ -25,3 +25,19 @@
         <button type="submit" class="btn btn-sm btn-primary" (click) = "onsubmit($event)"  style="float:right">Upload</button>
       </div>
   </div>
+
+
+  <div bsModal #modal   #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1" [config]="{ backdrop: 'static' }" data-keyboard="false" data-backdrop="false">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+          <div class="modal-body">
+            <p>File Uploaded Sucessfully... Will You Want  to Upload Another File .</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click) = "SelectFile()">YES</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Cancel()">NO</button>
+          </div>
+      </div>
+    </div>
+  
+  </div>

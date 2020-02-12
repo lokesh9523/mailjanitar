@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { UploadComponent } from './upload.component';
 import { UploadRoutingModule } from './upload-routing.module';
 import { TableModule } from 'primeng/table';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TableModule } from 'primeng/table';
     BsDropdownModule,
     TableModule,
     CommonModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    ModalModule
   ],
   declarations: [ UploadComponent ]
 })

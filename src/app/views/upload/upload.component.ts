@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { LocalStorageService } from 'ngx-store';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef,ModalDirective} from 'ngx-bootstrap/modal';
 
 @Component({
     templateUrl: 'upload.component.html'
@@ -21,6 +22,8 @@ export class UploadComponent implements OnInit {
     files: any = [];
     uploaddata;
     filelength;
+    @ViewChild(ModalDirective) modal: ModalDirective;
+    @ViewChild('myInput')myInputVariable: ElementRef;
     constructor(public apiservice: ApiService, public localstorageservice: LocalStorageService,public router:Router) {
     }
     ngOnInit() {
@@ -31,6 +34,7 @@ export class UploadComponent implements OnInit {
     }
     onSelectFile(event) {
         var format;
+        this.files = [];
         format = event.target.files;
         if(event.target.files.length){
             this.filelength = event.target.files.length
@@ -49,13 +53,20 @@ export class UploadComponent implements OnInit {
         }else{
             this.apiservice.UploadFile(this.localstorageservice.get('login_id'), this.uploaddata).subscribe((data: any) => {
                 if(data.data){
-                    alert("file uploaded sucessfully");
-                    this.router.navigateByUrl('/MyList');
+                this.modal.show();
                 }
             }, error => {
                 alert(error.error.data)
               });
         }
         
+    }
+    SelectFile(){
+    this.myInputVariable.nativeElement.value = "";
+    this.modal.hide();
+    }
+    
+    Cancel(){
+        this.router.navigateByUrl('/MyList');
     }
 }
