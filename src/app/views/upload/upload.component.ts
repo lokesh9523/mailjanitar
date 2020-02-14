@@ -51,13 +51,13 @@ export class UploadComponent implements OnInit {
         if(!this.filelength){
             alert("Please Uplaod the file");
         }else{
-            // this.apiservice.UploadFile(this.localstorageservice.get('login_id'), this.uploaddata).subscribe((data: any) => {
-            //     if(data.data){
+            this.apiservice.UploadFile(this.localstorageservice.get('login_id'), this.uploaddata).subscribe((data: any) => {
+                if(data.data){
                  this.modal.show();
-            //     }
-            // }, error => {
-            //     alert(error.error.data)
-            //   });
+                }
+            }, error => {
+                alert(error.error.data)
+              });
         }
         
     }
