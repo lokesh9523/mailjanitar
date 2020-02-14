@@ -22,7 +22,7 @@
      
  
     <div class="card-footer">
-        <button type="submit" class="btn btn-sm btn-primary" (click) = "onsubmit($event)"  style="float:right">Upload</button>
+        <button type="submit" class="btn btn-sm btn-primary" (click) = "onsubmit($event)"  style="float:right;background-color: #0072bc ;">Upload</button>
       </div>
   </div>
 
@@ -34,8 +34,8 @@
             <p>File Uploaded Sucessfully... Will You Want  to Upload Another File .</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click) = "SelectFile()">YES</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Cancel()">NO</button>
+            <button type="button" class="btn btn-primary" (click) = "SelectFile()" style="background-color: #0072bc ;">YES</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Cancel()" style="background-color: firebrick;">NO</button>
           </div>
       </div>
     </div>
