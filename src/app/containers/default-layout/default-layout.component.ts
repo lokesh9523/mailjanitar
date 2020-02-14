@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
 export class DefaultLayoutComponent {
   public sidebarMinimized = false;
   public navItems = navItems;
-  public name ;
+  public username ;
   public credits;
   constructor(public localstorageservice:LocalStorageService,public apiService:ApiService,public router:Router){
     this.apiService.langSubject.next(this.localstorageservice.get('credits'));
     this.credits = this.localstorageservice.get('credits');
-    this.name = this.localstorageservice.get('name');
+    this.username = this.localstorageservice.get('username');
   }
   toggleMinimize(e) {
     this.sidebarMinimized = e;
@@ -23,7 +23,7 @@ export class DefaultLayoutComponent {
 
   logout(){
     this.localstorageservice.clear();
-    this.router.navigateByUrl('/website');
+    this.router.navigateByUrl('/website');``
 
   }
 }

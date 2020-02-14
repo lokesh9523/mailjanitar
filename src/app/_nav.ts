@@ -3,17 +3,20 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     name: 'My List',
-    url: '/MyList'
+    url: '/MyList',
+    icon: 'icon-list'
     //   variant: 'info',
     //   text: 'NEW'
     // }
   },{
     name:'My Account',
-    url:'/myaccount'
+    url:'/myaccount',
+    icon:'icon-user'
   },
   {
     name:"Buy Credits",
-    url:'/buy-credits'
+    url:'/buy-credits',
+    icon:'icon-credit-card'
   }
   // {
   //   title: true,

@@ -12,3 +12,7 @@
         width: 75vw;
     }
 }
+.flex-box{
+    display: flex;
+    justify-content: space-between;
+}

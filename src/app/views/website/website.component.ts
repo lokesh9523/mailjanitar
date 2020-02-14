@@ -56,7 +56,7 @@ OnLogin(){
     this.apiservice.Login(logindata).subscribe((data:any)=>{
       if(data){
         this.localstorage.set('isLogin','true');
-        this.localstorage.set('name',data.data.name);
+        this.localstorage.set('username',data.data.username);
         this.localstorage.set('login_id',data.data.id);
         this.localstorage.set('credits',data.data.partner_detail.amount);
         this.apiservice.count = data.data.partner_detail.amount;

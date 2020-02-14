@@ -21,10 +21,14 @@
   </ng-template>
 </p-table> -->
 
-<div class="row" style="margin-bottom: 20px;" *ngIf="showupload">
+<div class="flex-row flex-box" *ngIf="showupload">
+    <div class="p-2 pull-left" ><a routerLink="/buy-credits"><button type="button" class="btn btn-primary" style="background-color:  #0072bc;"><i class = "fa fa-plus"></i>  Add Credits</button></a></div>
+    <div class="p-2 pull-right"><a routerLink="/upload"><button type="button" class="btn btn btn-success" style="background-color: #2a9201;"><i class="fa fa-cloud-upload"> </i>  Upload</button></a></div>
+</div>
+<!-- <div class="row" style="margin-bottom: 20px;" *ngIf="showupload">
     <div class="col-sm-6" ><a routerLink="/buy-credits"><button type="button" class="btn btn-primary">Add Credits</button></a></div>
     <div class="col-sm-6 "><a routerLink="/upload"><button type="button" class="btn btn-primary" style="float: right;">Upload</button></a></div>
-</div>
+</div> -->
 <div style="text-align: center;padding-bottom: 20px;">
 
     <span ><b>Uploaded New List</b></span>
