@@ -36,6 +36,8 @@ export class UploadComponent implements OnInit {
         var format;
         this.files = [];
         format = event.target.files;
+        if(event.target.files[0].type == "text/plain"){
+
         if(event.target.files.length){
             this.filelength = event.target.files.length
         }
@@ -45,6 +47,10 @@ export class UploadComponent implements OnInit {
         formData.append('image', fileList[0][0], fileList[0][0].name);
         this.uploaddata = formData;
 
+        }else{
+            alert("Incorrect File Format Please Upload .txt files Only");
+            this.myInputVariable.nativeElement.value = "";
+        }
     }
     onsubmit(event) {
         

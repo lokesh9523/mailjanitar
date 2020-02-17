@@ -41,7 +41,7 @@
                 {{col.header}}
                 <p-sortIcon [field]="col.field"></p-sortIcon>
             </th>
-            <!-- <th>Action <p-sortIcon [field]=""></p-sortIcon></th> -->
+            <th style="text-align:center"> Delete</th>
             <!-- <th>Edit 
             </th> -->
         </tr>
@@ -57,13 +57,16 @@
         <tr>
             <td *ngFor="let col of columns let idx = index">
                 <div style="text-align:center"> 
-                    <span *ngIf="idx!=4&& idx!=3">
+                    <span *ngIf="idx!=4&& idx!=3 && idx!=1">
                         {{rowData[col.field]}}
                     </span>
+                    <span  *ngIf="idx==1" >
+                        {{rowData.email_cleaned}}/{{rowData[col.field]}}
+                    </span>
                     <span *ngIf="idx==3">
-                        <i *ngIf = "rowData[col.field] == 100"class="fa fa-download"></i>
+                        <i *ngIf = "rowData.email_cleaned == rowData.email_count"class="fa fa-download"></i>
                         <!-- <p *ngIf = "rowData['col.field'] != 100">{{rowData[col.field]}}</p> -->
-                        <p-progressBar *ngIf="rowData[col.field] != 100" [value]="rowData[col.field]"></p-progressBar>
+                        <p-progressBar *ngIf="rowData.email_cleaned != rowData.email_count" [value]="rowData[col.field]"></p-progressBar>
                         <!-- <p><ngb-progressbar type="success" value = "rowData['col.field']    "></ngb-progressbar></p> -->
                         <!-- <div class="progress">
                             <div class="progress-bar" type="success" role="progressbar" [ngStyle]="{width: rowData['col.field']}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -71,15 +74,19 @@
                         <!-- <i *ngIf = "{{rowData['col.field']}} != 100"class="fa fa-download"></i> -->
                     </span>
                     <span *ngIf="idx==4">
-                        <button type="button" class="btn btn-sm btn-primary" *ngIf="rowData[col.field] == 0"  [disabled]="rowData[col.field] === 0" style="cursor: default">Cleaned</button>
-                        <button type="button" class="btn btn-sm btn-primary" *ngIf="rowData[col.field] != 0"  (click)="selectCarWithButton(rowData)" >Clean</button>
+                        <button type="button" class="btn btn-sm btn-primary" *ngIf="rowData.email_cleaned == rowData.email_count"  [disabled]= "rowData.email_cleaned == rowData.email_count" style="cursor: default">Cleaned</button>
+                        <button type="button" class="btn btn-sm btn-primary" *ngIf="rowData.email_cleaned != rowData.email_count"  (click)="selectCarWithButton(rowData)" >Clean</button>
                          <!-- <i class="pi pi-trash" (click)="selectCarWithButton(rowData)" style="cursor: pointer;"></i> -->
     
                     </span>
                 </div>
                 
             </td>
+            <td style="text-align:center">
+                <i class="pi pi-trash" (click)="DeleteFile(rowData)" style="cursor: pointer;"></i>
+            </td>
         </tr>
+
         <!-- <tr>
             <td *ngFor="let col of columns let idx=index">
                 <div style="text-align:center">
@@ -111,8 +118,8 @@
             <span aria-hidden="true">&times;</span>
           </button> -->
          <div class= "m-2">
-             <span>No of Mails: {{dialogdata.file_size}}</span><br><br>
-             <span> No of Credits:{{dialogdata.file_size}}</span><br><br>
+             <span>No of Mails: {{dialogdata.email_count}}</span><br><br>
+             <span> No of Credits:{{dialogdata.email_count}}</span><br><br>
              <span>No of Credits Available:{{dialogdata.credits}}</span>
              <button type="button" class="btn btn-sm btn-primary" style="float: right;" (click)="Cleandata(rowdata)">Clean</button>
          </div>

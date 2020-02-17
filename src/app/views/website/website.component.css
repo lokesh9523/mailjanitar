@@ -2,6 +2,7 @@
 #header .navbar .navbar-brand{
     padding: 0 2rem 0 5rem;
     font-weight: 700;
+    background-color: #002c86;
 }
 
 #header .main-menu .nav-item .nav-link{

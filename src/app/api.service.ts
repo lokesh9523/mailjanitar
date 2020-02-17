@@ -46,4 +46,8 @@ count;
     let headers = new HttpHeaders();
     return this.httpClient.get(`${this.API_URL}/partner/`+loginId+`/partner_details`, { headers: headers });
   }
+  UpdatePartnerData(loginId,dataId,data){
+    let headers = new HttpHeaders();
+    return this.httpClient.put(`${this.API_URL}/partner/`+ loginId +`/data/`+dataId,data, { headers: headers });
+  }
 }
