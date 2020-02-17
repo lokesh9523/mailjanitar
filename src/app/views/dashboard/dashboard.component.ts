@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
   }
   Cleandata() {
     this.modal.hide();
-    if (this.dialogdata.file_size >= this.localstorage.get('credits')) {
+    if (this.dialogdata.email_count >= this.localstorage.get('credits')) {
       alert('Insuffients Funds!!!');
     } else {
       this.tabledata.forEach(element => {
