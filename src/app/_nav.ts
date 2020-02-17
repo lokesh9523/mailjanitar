@@ -18,11 +18,11 @@ export const navItems: INavData[] = [
     url:'/buy-credits',
     icon:'icon-credit-card'
   },
-  // {
-  //   name:"Upload",
-  //   url:'/upload',
-  //   icon:'icon-cloud-upload'
-  // }
+  {
+    name:"Upload",
+    url:'/upload',
+    icon:'icon-cloud-upload'
+  }
   // {
   //   title: true,
   //   name: 'Theme'
