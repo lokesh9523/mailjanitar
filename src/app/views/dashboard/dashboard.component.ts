@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit {
   DeleteFile(rowdata) {
     this.apiservice.DeletePartnerdata(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
           if(data.data){
-           alert("File has been deleted cleaned sucessfully");
+           alert("File has been deleted sucessfully");
             this.PartnerData();
           }
         })
