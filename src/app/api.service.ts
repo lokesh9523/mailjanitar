@@ -13,11 +13,13 @@ API_URL = config.API_URL;
 
 langSubject = new Subject<string>();
 language$ = this.langSubject.asObservable();
+token;
+
 count;
   constructor(private httpClient: HttpClient, public localstorageservice:LocalStorageService) { 
     this.count = this.localstorageservice.get('credits');
   }
-
+  
   Register(data){
     let headers = new HttpHeaders();
     return this.httpClient.post(`${this.API_URL}/register`, data, { headers: headers });
@@ -27,27 +29,31 @@ count;
     return this.httpClient.post(`${this.API_URL}/login`, data, { headers: headers });
   }
   UpdatePartner(data){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.put(`${this.API_URL}/partner/`+data.login_id, data, { headers: headers });
   }
   getPartnerData(loginId){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.get(`${this.API_URL}/partner/`+loginId, { headers: headers });
   }
   UploadFile(loginId,filedata){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.post(`${this.API_URL}/partner/`+loginId, filedata, { headers: headers });
   }
   DeletePartnerdata(loginId,dataId){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.delete(`${this.API_URL}/partner/`+ loginId +`/data/`+dataId, { headers: headers });
   }
   getPartnerDetails(loginId){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.get(`${this.API_URL}/partner/`+loginId+`/partner_details`, { headers: headers });
   }
   UpdatePartnerData(loginId,dataId,data){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.put(`${this.API_URL}/partner/`+ loginId +`/data/`+dataId,data, { headers: headers });
+  }
+  getAllPartners(){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
+    return this.httpClient.get(`${this.API_URL}/admin/partners/`, { headers: headers });
   }
 }

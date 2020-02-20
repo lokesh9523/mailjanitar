@@ -59,6 +59,8 @@ OnLogin(){
         this.localstorage.set('username',data.data.username);
         this.localstorage.set('login_id',data.data.id);
         this.localstorage.set('credits',data.data.partner_detail.amount);
+        this.localstorage.set('role',data.data.partner_role.role.name);
+        this.localstorage.set('token',data.data.token);
         this.apiservice.count = data.data.partner_detail.amount;
         this.router.navigateByUrl('/MyList');
         this.message = '';
