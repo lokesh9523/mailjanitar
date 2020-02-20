@@ -1,0 +1,39 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+// .navbar-toggler-icon{
+//     display:none;
+// }
+
+.flow-items {
+    position: absolute;
+    right: 3rem;
+}
+
+.app-header {
+
+    border-bottom: 0 !important;
+}
+
+@media (max-width: 991.98px){
+    .app-header .navbar-brand {
+        position: absolute;
+        top: 0;
+        left: 7rem;
+        margin-left: -77.5px;
+    }
+}
+.sidebar .nav-link.active {
+    
+    background:  #0b78ff !important;
+}
+
+.sidebar .nav-link .nav-icon,
+.sidebar .nav-link.active .nav-icon {
+    color: #f1f1f1;
+}

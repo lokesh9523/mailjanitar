@@ -1,0 +1,29 @@
+#header .navbar .navbar-brand{
+    padding: 0 2rem 0 5rem;
+    font-weight: 700;
+}
+
+#header .main-menu .nav-item .nav-link{
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem;
+    color: var(--title-color);
+}
+
+#header .main-menu .navbar-nav .active a{
+    background: var(--gradient-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#header .main-menu .navbar-nav a:hover{
+    background: var(--gradient-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+#footer .text-blk{
+    padding: 0 2rem 0 5rem;
+    font-weight: 500;
+}

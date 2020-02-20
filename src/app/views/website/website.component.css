@@ -1,0 +1,25 @@
+/* carousel css */
+#header .navbar a.navbar-brand{
+    padding-left: 2.5rem !important;
+}
+a.navbar-brand img {
+    width: 10%;
+    height: auto;
+}
+.navbar-toggler{
+    position: absolute;
+    right: 2.5rem;
+}
+#header .navbar .main-menu .nav-item button{
+    font-weight: 500;
+    color: slategray;
+}
+@media (max-width: 661px){
+    #header .navbar a.navbar-brand{
+        padding-left: 1.5rem !important;
+    }
+    a.navbar-brand img {
+        width: 30%;
+        height: auto;
+    }
+}

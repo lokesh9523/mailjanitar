@@ -1,0 +1,101 @@
+<section id="header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand mb-0" href="#">Mail Janitar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+      <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto main-menu">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink = "/website">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink = "/register">Register <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link"routerLink = "/login">Login <span class="sr-only">(current)</span></a>
+            </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <!-- <div class="justify-content-end">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div> -->
+      </div>
+    </nav>
+</section>
+
+
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto" style="padding-top: 5rem">
+          <div class="card-group">
+            <!-- <div class="card p-4"> -->
+              <div class="card-body">
+                <form (ngSubmit)="OnLogin()">
+                  <div class="card-group">
+                    <div class="card p-4">
+                      <div class="card-body">
+                        <h1>Login</h1>
+                        <!-- <p class="text-muted">Sign In to your account</p> -->
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="icon-user"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Username" [(ngModel)] = "Username"name="username">
+                        </div>
+                        <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="icon-lock"></i>
+                            </span>
+                          </div>
+                          <input type="password" class="form-control" placeholder="Password" [(ngModel)] = "Password" name="password">
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <button type="submit" class="btn btn-primary px-4">Login</button>
+                            <br>
+                            <span style="color:darkred">{{message}}</span>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<section id="footer" class="footer bg-dark py-2">
+  <div class="text-blk">
+     @All rights reserved with Blocmatrix
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+      <strong>Upload</strong>
+      <!-- <small>Form</small> -->
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>File</label>   <small style="color: red;">    Only .txt files are allowed * </small><span style="font-size: 10px">
+                    </span>
+                <input #myInput type='file' id = "file" (change)="onSelectFile($event)"  class="form-control" >
+                <!-- <label for="name">Amount</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter the amount" [(ngModel)]="credits"> -->
+              </div>
+            </div>
+          
+        </div>
+        <!-- <img class=" mt-3" *ngFor='let url of urls' (change)="onSelectFile($event)"[src]="url" height="100"> <br /> -->
+        </div>
+        
+     
+ 
+    <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary" (click) = "onsubmit($event)"  style="float:right;background-color: #0072bc ;">Upload</button>
+      </div>
+  </div>
+
+
+  <div bsModal #modal   #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1" [config]="{ backdrop: 'static' }" data-keyboard="false" data-backdrop="false">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+          <div class="modal-body">
+            <p>File Uploaded Sucessfully... Will You Want  to Upload Another File .</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click) = "SelectFile()" style="background-color: #0072bc ;">YES</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Cancel()" style="background-color: firebrick;">NO</button>
+          </div>
+      </div>
+    </div>
+  
+  </div>
