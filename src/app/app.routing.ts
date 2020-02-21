@@ -87,7 +87,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path:'partners',
+        path:'users',
         loadChildren:()=>import('./views/partners/partner.module').then(m=>m.PartnerModule)
       }
       // {

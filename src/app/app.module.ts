@@ -49,9 +49,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './auth/auth.guard';
 import { LocalStorageService } from 'ngx-store';
+import {RoleGaurdService} from './auth/role.guard';
 // import {DialogModule} from 'primeng/dialog';
 import {DatePipe} from '@angular/common';
 import {MatDialogModule,MatButtonModule} from "@angular/material";
+import { QRCodeModule } from 'angularx-qrcode';
 @NgModule({
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import {MatDialogModule,MatButtonModule} from "@angular/material";
     TableModule,
     DropdownModule,FormsModule, ReactiveFormsModule,HttpClientModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    QRCodeModule
     // DialogModule
   ],
   declarations: [
@@ -85,7 +88,8 @@ import {MatDialogModule,MatButtonModule} from "@angular/material";
 
   providers: [ApiService,
     AuthGuardService,
-    LocalStorageService,DatePipe
+    LocalStorageService,DatePipe,
+    RoleGaurdService
   //   {
   //   provide: LocationStrategy,
   //   useClass: HashLocationStrategy

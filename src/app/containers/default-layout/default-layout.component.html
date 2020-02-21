@@ -6,7 +6,7 @@
   [mobileAsideMenuToggler]="false"
   [asideMenuToggler]="false" >
   <div class="flow-items">
-    <div class="d-inline p-2" style="color: #ebebeb;">Credits: <span class="badge badge-pill badge-danger">{{apiService.count}}</span></div>
+    <div *ngIf="showcredits" class="d-inline p-2" style="color: #ebebeb;">Credits: <span class="badge badge-pill badge-danger">{{apiService.count}}</span></div>
     <!-- <div class="d-inline p-2"><i class="icon-user"> </i><span>{{name}}</span></div> -->
   </div>
   <ul class="nav navbar-nav ml-auto">

@@ -12,21 +12,34 @@ import { DatePipe } from '@angular/common';
 })
 export class PartnerComponent implements OnInit {
   cols = [
-    {header:"Name",field:"name"},
-    { header: "Size", field: "size" },
-    { header: "Upload Date", field: "upload_date" },
-    { header: "process", field: "process" },
+    // {header:"Sno",field:"id"},
+    {header:"Username",field:"username"},
+    { header: "Email", field: "email" },
+    { header: "Credits", field: "amount" },
     
     //{header:""}
   ];
   tabledata = [];
   user;
+  totalusers = 0
   constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe,) {
     }
   ngOnInit() {
   this.apiservice.getAllPartners().subscribe((data:any)=>{
     // if(data){
       this.user = data.data;
+      this.totalusers = data.data.length;
+      data.data.forEach(element => {
+        element.amount = 0
+        console.log(element);
+        if(element.partner_detail){
+          if(element.partner_detail.amount){
+            element.amount = element.partner_detail.amount;
+          }
+        }
+        
+      });
+      this.tabledata = data.data;
       console.log(this.user);
     // }
   },error=>{

@@ -1,38 +1,40 @@
-<div class="animated fadeIn">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-header" style="font-weight: bold;">
-            Profile Details
-          </div>
-          <div class="card-body" *ngIf="user">
-  
-            <div class="form-group row">
-              <div class="col-sm-12 mb-2">
-                <label> Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.name" >
-              </div>
-              <div class="col-sm-12 mb-2">
-                <label>User Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.username"  disabled>
-              </div>
+<span>Total Users:{{totalusers}}</span>
 
-              <div class="col-sm-12 mb-2">
-                <label>Email</label>
-                <input type="text" class="form-control" [(ngModel)]="user.email"  >
-              </div>
-              <div class="col-sm-12">
-                <label>Available Credits</label>
-                <input type="text" class="form-control" [(ngModel)]="user.partner_detail.amount"  >
-              </div>
-            <!-- <div class="form-group form-actions">
-              <button type="submit" class="btn btn-sm btn-primary" style="float: right"
-                (click)="editUser($event)"></button>
-            </div> -->
-          </div>
-        </div>
-      
-      </div>
-    </div>
-  </div>
-  
+<p-table #dt1 [columns]="cols" [value]="tabledata" [paginator]="true" [rows]="10" dataKey="vin"
+    [resizableColumns]="true" [reorderableColumns]="true" >
+    <ng-template pTemplate="header" let-columns >
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn style="text-align: center;">
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+            <th style="text-align:center"> View</th>
+            <!-- <th>Edit 
+            </th> -->
+        </tr>
+        <!-- <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-fluid">
+                <input pInputText type="text" 
+                    (input)="dt1.filter($event.target.value, col.field, 'contains')"
+                    [value]="dt1.filters[col.field]?.value">
+            </th>
+        </tr> -->
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns let idx = index">
+                <div style="text-align:center"> 
+                    <span >
+                        {{rowData[col.field]}}
+                    </span>
+                   
+                </div>
+                
+            </td>
+            <td style="text-align:center">
+              <button type="button" class="btn btn-primary">view</button>
+                <!-- <i class="pi pi-trash" (click)="DeleteFile(rowData)" style="cursor: pointer;"></i> -->
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

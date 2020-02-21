@@ -56,4 +56,8 @@ count;
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.get(`${this.API_URL}/admin/partners/`, { headers: headers });
   }
+  buyEther(loginId,data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
+    return this.httpClient.put(`${this.API_URL}/partner/`+ loginId +`/ether`,data, { headers: headers });
+  }
 }
