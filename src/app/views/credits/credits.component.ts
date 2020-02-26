@@ -26,14 +26,11 @@ export class CreditComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
   constructor(public apiservice:ApiService,public localstorageservice:LocalStorageService) {
     this.myAngularxQrCode = config.ADDRESS;
-    console.log(this.myAngularxQrCode,"==============");
     }
   ngOnInit() {
     this.apiservice.getPartnerDetails(this.localstorageservice.get('login_id')).subscribe((data:any)=>{
       if(data){
-        console.log(data.data.partner_detail.ether_amount,"===============")
        if(!data.data.partner_detail.ether_account){
-         console.log("iam here");
          this.modal.show();
        }else{
 
@@ -50,13 +47,11 @@ if(!this.credits){
 }else{
   let credit = +this.credits + this.localstorageservice.get('credits');
   let data = {"amount":credit,"login_id":this.localstorageservice.get('login_id')}
-    this.apiservice.buyEther(this.localstorageservice.get('login_id'),data).subscribe((updateddata:any)=>{
+  this.apiservice.depositeJan(data).subscribe((updateddata:any)=>{
       console.log(updateddata,"=============")
       if(updateddata){
-        // console.log(updateddata,"=============")
-        // this.localstorageservice.set('credits',updateddata.data.amount);
-        // this.apiservice.count = updateddata.data.amount;
-        // alert("Ether added sucessfully");
+        
+         alert("you will get an alert once you complete the transcation from your mobile");
       }
     })
 }
@@ -64,14 +59,17 @@ if(!this.credits){
   Addaccount(){
     if(!this.accountnumber){
      // this.message = "please enter the account number";
-      alert("please enter the ether")
+      alert("please enter the account number")
     }else{
       let data = {"ether_account":this.accountnumber,"login_id":this.localstorageservice.get('login_id')}
-        this.apiservice.UpdatePartner(data).subscribe((updateddata:any)=>{
+        this.apiservice.addEtheraccount(data).subscribe((updateddata:any)=>{
           if(updateddata){
             alert("Account  added sucessfully");
             this.modal.hide();
           }
+        },error=>{
+          // alert(error.error.data);
+          this.message = error.error.data;
         })
     }
   }

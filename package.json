@@ -61,6 +61,7 @@
     "ts-helpers": "^1.1.2",
     "tslib": "^1.10.0",
     "web-animations-js": "^2.3.2",
+    "ws": "^7.2.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

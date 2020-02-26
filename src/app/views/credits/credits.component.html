@@ -1,22 +1,31 @@
 <div class="card">
     <div class="card-header">
-      <strong>Buy Ether</strong>
+      <strong>Buy Jan</strong>
       <!-- <small>Form</small> -->
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-                <label for="name">Ether</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter the ether" [(ngModel)]="credits">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <!-- <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode> -->
+              <label for="name"><b>Jan</b></label> <span class="float-right">{{credits * 1000}} credits</span>
+              <input type="number" class="form-control" id="name" placeholder="Enter the jan" [(ngModel)]="credits" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"><br><br>
+              <h4>Note:</h4><br>
+              <span>1 JAN  coin = 1000 credits</span>
+            </div>
+          </div>
+            <div class="col-sm-4">
+              <div class="form-group text-center">
+                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode><label class="d-block">Scan QR</label>
+                <!-- <label for="name">Jan</label> <span>(1JAN = 1000 credits)</span>{{credits * 1000}}
+                <input type="number" class="form-control" id="name" placeholder="Enter the jan" [(ngModel)]="credits"> -->
               </div>
             </div>
         </div>
       
     </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-sm btn-primary" (click)="addCredits()" style="float:right;background-color: #0072bc ;">Add</button>
+        <button type="submit" class="btn btn-sm btn-primary" (click)="addCredits()" style="float:right;background-color: #0072bc ;">Deposit</button>
       </div>
   </div>
 
@@ -41,6 +50,9 @@
                 <input type="text" class="form-control" id="name" placeholder="Enter the ethereum account" [(ngModel)]="accountnumber" >
               </div>
               <button type="button" class="btn btn-sm btn-primary" style="float: right;" (click)="Addaccount(rowdata)">Add</button>
+              <div style="color: red;">
+                {{message}}
+              </div>
             </div>
         </div>
         </div>
