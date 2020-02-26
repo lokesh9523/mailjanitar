@@ -1,85 +1,62 @@
 <div class="card">
     <div class="card-header">
-      <strong>Buy Ether</strong>
+      <strong>Buy Jan</strong>
       <!-- <small>Form</small> -->
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="name">Ether</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter the ether" [(ngModel)]="credits">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <!-- <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode> -->
+              <label for="name"><b>Jan</b></label> <span class="float-right">{{credits * 1000}} credits</span>
+              <input type="number" class="form-control" id="name" placeholder="Enter the jan" [(ngModel)]="credits" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"><br><br>
+              <h4>Note:</h4><br>
+              <span>1 JAN  coin = 1000 credits</span>
+            </div>
+          </div>
+            <div class="col-sm-4">
+              <div class="form-group text-center">
+                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode><label class="d-block">Scan QR</label>
+                <!-- <label for="name">Jan</label> <span>(1JAN = 1000 credits)</span>{{credits * 1000}}
+                <input type="number" class="form-control" id="name" placeholder="Enter the jan" [(ngModel)]="credits"> -->
               </div>
             </div>
         </div>
-      <!-- <div class="row">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label for="name">amount</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name">
-          </div>
-        </div>
-    </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label for="ccnumber">Credit Card Number</label>
-            <input type="text" class="form-control" id="ccnumber" placeholder="0000 0000 0000 0000">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm-4">
-          <label for="ccmonth">Month</label>
-          <select class="form-control" id="ccmonth">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-          </select>
-        </div>
-        <div class="form-group col-sm-4">
-          <label for="ccyear">Year</label>
-          <select class="form-control" id="ccyear">
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            <option>2019</option>
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
-            <option>2025</option>
-          </select>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="cvv">CVV/CVC</label>
-            <input type="text" class="form-control" id="cvv" placeholder="123">
-          </div>
-        </div>
-      </div>-->
+      
     </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-sm btn-primary" (click)="addCredits()" style="float:right;background-color: #0072bc ;">Add</button>
+        <button type="submit" class="btn btn-sm btn-primary" (click)="addCredits()" style="float:right;background-color: #0072bc ;">Deposit</button>
       </div>
+  </div>
+
+  
+  <div bsModal #modal   #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Enter Ethereum Account Number</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="lgModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+        <div class="modal-body" >
+          <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="lgModal.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="name">Account Number</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter the ethereum account" [(ngModel)]="accountnumber" >
+              </div>
+              <button type="button" class="btn btn-sm btn-primary" style="float: right;" (click)="Addaccount(rowdata)">Add</button>
+              <div style="color: red;">
+                {{message}}
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  
   </div>

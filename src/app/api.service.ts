@@ -56,4 +56,16 @@ count;
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
     return this.httpClient.get(`${this.API_URL}/admin/partners/`, { headers: headers });
   }
+  buyEther(loginId,data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
+    return this.httpClient.put(`${this.API_URL}/partner/`+ loginId +`/ether`,data, { headers: headers });
+  }
+  addEtheraccount(data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
+    return this.httpClient.put(`${this.API_URL}/partner/`+data.login_id+`/ether`, data, { headers: headers });
+  }
+  depositeJan(data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token')});
+    return this.httpClient.post(`${this.API_URL}/partner/`+data.login_id+`/request`, data, { headers: headers });
+  }
 }

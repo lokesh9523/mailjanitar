@@ -7,7 +7,8 @@ import { BsModalService, BsModalRef,ModalDirective} from 'ngx-bootstrap/modal';
 import { LocalStorageService } from 'ngx-store';
 @Component({
 //   selector: 'app-dashboard',
-  templateUrl: 'website.component.html'
+  templateUrl: 'website.component.html',
+  styleUrls: ['website.component.css']
 })
 
 export class WebsiteComponent { 
@@ -59,10 +60,15 @@ OnLogin(){
         this.localstorage.set('username',data.data.username);
         this.localstorage.set('login_id',data.data.id);
         this.localstorage.set('credits',data.data.partner_detail.amount);
-        this.localstorage.set('role',data.data.partner_role.role.name);
-        this.localstorage.set('token',data.data.token);
         this.apiservice.count = data.data.partner_detail.amount;
-        this.router.navigateByUrl('/MyList');
+        this.localstorage.set('token',data.data.token);
+        this.localstorage.set('role',data.data.partner_role.role.name);
+        if(data.data.partner_role.role.name === "admin"){
+          this.router.navigateByUrl('/partners');
+
+        }else{
+          this.router.navigateByUrl('/MyList');
+        }
         this.message = '';
       }
     }, error => {

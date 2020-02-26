@@ -7,6 +7,9 @@ import { CommonModule } from '@angular/common';
 import { CreditComponent } from './credits.component';
 import { CreditRoutingModule } from './credits-routing.module';
 import { TableModule } from 'primeng/table';
+import { QRCodeModule } from 'angularx-qrcode';
+import {DialogModule} from 'primeng/dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { TableModule } from 'primeng/table';
     BsDropdownModule,
     TableModule,
     CommonModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    QRCodeModule,
+    DialogModule,
+    ModalModule
   ],
   declarations: [ CreditComponent ]
 })
