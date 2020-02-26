@@ -16,7 +16,7 @@ export class CreditComponent implements OnInit {
     
     //{header:""}
   ];
-  credits = '';
+  credits = 0;
   message;
   accountnumber = '';
   tabledata = [];
