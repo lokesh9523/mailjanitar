@@ -54,6 +54,7 @@ import {RoleGaurdService} from './auth/role.guard';
 import {DatePipe} from '@angular/common';
 import {MatDialogModule,MatButtonModule} from "@angular/material";
 import { QRCodeModule } from 'angularx-qrcode';
+import { ClipboardModule } from 'ngx-clipboard';
 @NgModule({
   imports: [
     BrowserModule,
@@ -73,7 +74,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     DropdownModule,FormsModule, ReactiveFormsModule,HttpClientModule,
     MatDialogModule,
     MatButtonModule,
-    QRCodeModule
+    QRCodeModule,
+    ClipboardModule
     // DialogModule
   ],
   declarations: [

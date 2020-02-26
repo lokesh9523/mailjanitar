@@ -4,6 +4,7 @@ import {ApiService} from './../../api.service';
 import { LocalStorageService } from 'ngx-store';
 import{ default as config} from './../../views/config'
 import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
+import { ClipboardService } from 'ngx-clipboard';
 @Component({
   templateUrl: 'credits.component.html'
 })

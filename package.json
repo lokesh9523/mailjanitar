@@ -52,6 +52,7 @@
     "mutationobserver-shim": "^0.3.3",
     "ng2-charts": "^2.3.0",
     "ngx-bootstrap": "^5.2.0",
+    "ngx-clipboard": "^13.0.0",
     "ngx-perfect-scrollbar": "^8.0.0",
     "ngx-store": "^2.1.0",
     "primeicons": "^2.0.0",
