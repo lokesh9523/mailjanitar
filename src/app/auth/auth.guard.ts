@@ -7,7 +7,7 @@ export class AuthGuardService implements CanActivate {
   constructor(public router: Router, public localStorageService: LocalStorageService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (route.routeConfig.component.name == "LoginComponent")  {
+    if (route.routeConfig.component.name == "WebsiteComponent")  {
       if (this.localStorageService.get('isLogin')) {
         this.router.navigate(['/dashboard']);
         return false;
