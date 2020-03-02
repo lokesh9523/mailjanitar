@@ -37,3 +37,22 @@
 .sidebar .nav-link.active .nav-icon {
     color: #f1f1f1;
 }
+@media(max-width: 478px) {
+
+    p-table {
+        width: 100% !important;
+        overflow-x: scroll !important;
+    }
+    .ui-table-wrapper {
+        width: 100% !important;
+        overflow-x: scroll !important;
+    }
+    
+    .ui-table table {
+        overflow-x: scroll !important;
+        border-collapse: collapse;
+        width: 100% !important;
+        table-layout: unset !important;
+    }
+    
+    }

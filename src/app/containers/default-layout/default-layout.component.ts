@@ -66,7 +66,7 @@ export class DefaultLayoutComponent {
       if (e.data) {
         console.log(e.data,"=======================");
         this.apiService.wsSubject.next(e.data);
-        // this.apiService.getPartnerDetails(this.localstorageservice.get('login_id')).subscribe((partnerdata:any)=>{
+        // this.apiService.getUserdetails(this.localstorageservice.get('login_id')).subscribe((partnerdata:any)=>{
         //   if(partnerdata){
         //     // console.log(partnerdata,"===================")
         //     data.forEach(element => {

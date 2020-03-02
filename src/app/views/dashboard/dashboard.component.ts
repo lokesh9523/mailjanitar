@@ -23,7 +23,9 @@ export class DashboardComponent implements OnInit {
   credits = '';
   showupload: boolean = false;
   display: boolean = false;
+  stopcleaning:boolean = false;
   dialogdata = {"email_cleaned":"","id":"","login_id":"","credits":"","email_count":""};
+  cleaningdata = [];
   value: number = 0;
   showconform:boolean = false;
   @ViewChild(ModalDirective) modal: ModalDirective;
@@ -61,11 +63,12 @@ export class DashboardComponent implements OnInit {
   }
   PartnerData() {
     this.tabledata = [];
-    this.apiservice.getPartnerData(this.localstorage.get('login_id')).subscribe((data: any) => {
+    this.apiservice.getUserData(this.localstorage.get('login_id')).subscribe((data: any) => {
       if (data.data.length) {
         data.data.forEach(element => {
           if (element.date_created) {
             element.date_created = this.datepipe.transform(element.date_created, "yyyy-MM-dd ");
+           // element.stopcleaning = false;
           }
         });
         this.tabledata = data.data;
@@ -78,8 +81,9 @@ export class DashboardComponent implements OnInit {
     this.showconform = false
     this.modal.show();
     this.dialogdata = rowdata;
+    this.cleaningdata.push(rowdata);
     this.dialogdata.credits = this.localstorage.get('credits');
-
+    //this.stopcleaning = true;
 
 
   }
@@ -90,7 +94,7 @@ export class DashboardComponent implements OnInit {
     } else {
       this.tabledata.forEach(element => {
         if (element.id == this.dialogdata.id) {
-          element.status = 0;
+          // element.stopcleaning = true
           let params = {"login_id":this.dialogdata.login_id,"file_id":this.dialogdata.id};
           this.apiservice.cleanMail(params).subscribe((cleanmail=>{
 
@@ -103,8 +107,8 @@ export class DashboardComponent implements OnInit {
           //     let credit = this.localstorage.get('credits') - this.dialogdata.email_count;
           //     let data = { "amount": credit, "login_id": this.localstorage.get('login_id') };
           //     let partnerData = {"email_cleaned":element.email_cleaned,"status":element.status};
-          //     this.apiservice.UpdatePartnerData(this.dialogdata.login_id,this.dialogdata.id,partnerData).subscribe((partnerdata:any)=>{
-          //       this.apiservice.UpdatePartner(data).subscribe((updateddata: any) => {
+          //     this.apiservice.updateUserData(this.dialogdata.login_id,this.dialogdata.id,partnerData).subscribe((partnerdata:any)=>{
+          //       this.apiservice.updateUser(data).subscribe((updateddata: any) => {
           //         if (updateddata) {
           //           this.localstorage.set('credits', updateddata.data.amount);
           //           this.apiservice.count = updateddata.data.amount;
@@ -128,7 +132,7 @@ export class DashboardComponent implements OnInit {
     this.showconform = true;
     this.modal.show();
 
-  //   this.apiservice.DeletePartnerdata(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
+  //   this.apiservice.deleteUserData(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
   //         if(data.data){
   //          alert("File has been deleted sucessfully");
   //           this.PartnerData();
@@ -138,5 +142,9 @@ export class DashboardComponent implements OnInit {
    cancelFile(){
      this.showconform = false;
      this.modal.hide();
+   }
+
+   Stopcleaning(){
+    this.stopcleaning = false;;
    }
 }

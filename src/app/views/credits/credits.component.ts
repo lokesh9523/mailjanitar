@@ -29,7 +29,7 @@ export class CreditComponent implements OnInit {
     this.myAngularxQrCode = config.ADDRESS;
     }
   ngOnInit() {
-    this.apiservice.getPartnerDetails(this.localstorageservice.get('login_id')).subscribe((data:any)=>{
+    this.apiservice.getUserdetails(this.localstorageservice.get('login_id')).subscribe((data:any)=>{
       if(data){
        if(!data.data.partner_detail.ether_account){
          this.modal.show();

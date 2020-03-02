@@ -74,38 +74,24 @@ export const routes: Routes = [
         path:'buy-credits',
         loadChildren:()=>import('./views/credits/credits.module').then(m=>m.CreditModule)
       },
-      // {
-      //   path: 'buttons',
-      //   loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
-      // },
-      // {
-      //   path: 'charts',
-      //   loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
-      // },
+     
       {
         path: 'MyList',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path:'users',
-        loadChildren:()=>import('./views/partners/partner.module').then(m=>m.PartnerModule)
+        loadChildren:()=>import('./views/users/users.module').then(m=>m.UsersModule)
+      },
+      {
+        path:'transaction',
+        loadChildren:()=>import('./views/transactions/transaction.module').then(m=>m.TransactionModule)
+      },
+      {
+        path:'domain',
+        loadChildren:()=>import('./views/domain/domain.module').then(m=>m.DomainModule)
       }
-      // {
-      //   path: 'icons',
-      //   loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
-      // },
-      // // {
-      //   path: 'notifications',
-      //   loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      // },
-      // {
-      //   path: 'theme',
-      //   loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
-      // },
-      // {
-      //   path: 'widgets',
-      //   loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      // }
+     
     ]
   },
   { path: '**', component: P404Component }

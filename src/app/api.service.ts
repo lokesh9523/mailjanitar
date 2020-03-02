@@ -37,7 +37,7 @@ export class ApiService implements OnInit {
       if (e.data) {
         console.log(e.data,"=======================");
         this.wsSubject.next(e.data);
-        // this.apiService.getPartnerDetails(this.localstorageservice.get('login_id')).subscribe((partnerdata:any)=>{
+        // this.apiService.getUserdetails(this.localstorageservice.get('login_id')).subscribe((partnerdata:any)=>{
         //   if(partnerdata){
         //     // console.log(partnerdata,"===================")
         //     data.forEach(element => {
@@ -68,11 +68,11 @@ export class ApiService implements OnInit {
     let headers = new HttpHeaders();
     return this.httpClient.post(`${this.API_URL}/login`, data, { headers: headers });
   }
-  UpdatePartner(data) {
+  updateUser(data) {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.put(`${this.API_URL}/partner/` + data.login_id, data, { headers: headers });
   }
-  getPartnerData(loginId) {
+  getUserData(loginId) {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.get(`${this.API_URL}/partner/` + loginId, { headers: headers });
   }
@@ -80,19 +80,19 @@ export class ApiService implements OnInit {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.post(`${this.API_URL}/partner/` + loginId, filedata, { headers: headers });
   }
-  DeletePartnerdata(loginId, dataId) {
+  deleteUserData(loginId, dataId) {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.delete(`${this.API_URL}/partner/` + loginId + `/data/` + dataId, { headers: headers });
   }
-  getPartnerDetails(loginId) {
+  getUserdetails(loginId) {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.get(`${this.API_URL}/partner/` + loginId + `/partner_details`, { headers: headers });
   }
-  UpdatePartnerData(loginId, dataId, data) {
+  updateUserData(loginId, dataId, data) {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.put(`${this.API_URL}/partner/` + loginId + `/data/` + dataId, data, { headers: headers });
   }
-  getAllPartners() {
+  getAllUsers() {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.get(`${this.API_URL}/admin/partners/`, { headers: headers });
   }
@@ -111,5 +111,29 @@ export class ApiService implements OnInit {
   cleanMail(data){
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.get(`${this.API_URL}/partner/`+data.login_id+`/file/`+data.file_id+`/clean`, { headers: headers });
+  }
+  getAllTransaction(){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/admin/ether/transcations`, { headers: headers });
+  }
+  getUserHistory(login_id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/admin/partner/`+login_id+`/history`, { headers: headers });
+  }
+  addDomain(data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.post(`${this.API_URL}/domain`, data, { headers: headers });
+  }
+  updateDomain(data,id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.put(`${this.API_URL}/domain/`+id, data, { headers: headers });
+  }
+  getAllDomain(){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/domain`, { headers: headers });
+  }
+  getDomainById(id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/domain/`+id, { headers: headers });
   }
 }

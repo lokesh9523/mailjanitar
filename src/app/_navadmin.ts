@@ -6,6 +6,16 @@ export const navAdminItems: INavData[] = [
     url: '/users',
     icon: 'icon-user'
   },
+  {
+    name:'Transactions',
+    url:'/transaction',
+    icon:'icon-user'
+  },
+  {
+    name:'Domains',
+    url:'/domain',
+    icon:'icon-user'
+  }
 //   {
 //     name:'My Account',
 //     url:'/myaccount',
