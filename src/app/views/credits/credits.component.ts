@@ -49,7 +49,6 @@ if(!this.credits){
   let credit = +this.credits + this.localstorageservice.get('credits');
   let data = {"amount":credit,"login_id":this.localstorageservice.get('login_id')}
   this.apiservice.depositeJan(data).subscribe((updateddata:any)=>{
-      console.log(updateddata,"=============")
       if(updateddata){
         
          alert("you will get an alert once you complete the transcation from your mobile");

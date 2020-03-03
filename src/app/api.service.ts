@@ -22,7 +22,7 @@ export class ApiService implements OnInit {
   }
 
   ngOnInit() {
-    console.log("iam hereeeee");
+    //console.log("iam hereeeee");
     const url = config.WEB_URL;
     const connection = new WebSocket(url)
     connection.onopen = () => {
@@ -35,7 +35,7 @@ export class ApiService implements OnInit {
 
     connection.onmessage = (e) => {
       if (e.data) {
-        console.log(e.data,"=======================");
+       // console.log(e.data,"=======================");
         this.wsSubject.next(e.data);
         // this.apiService.getUserdetails(this.localstorageservice.get('login_id')).subscribe((partnerdata:any)=>{
         //   if(partnerdata){
@@ -135,5 +135,21 @@ export class ApiService implements OnInit {
   getDomainById(id){
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.get(`${this.API_URL}/domain/`+id, { headers: headers });
+  }
+  addUrl(data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.post(`${this.API_URL}/url`, data, { headers: headers });
+  }
+  getAllUrl(){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/url`, { headers: headers });
+  }
+  updateUrl(data,id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.put(`${this.API_URL}/url/`+id, data, { headers: headers });
+  }
+  geturlById(id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/url/`+id, { headers: headers });
   }
 }

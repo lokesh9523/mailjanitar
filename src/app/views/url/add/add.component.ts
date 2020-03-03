@@ -20,32 +20,29 @@ export class AddComponent implements OnInit {
     //{header:""}
   ];
   tabledata = [];
-  user={"domain_name":"","url":"","speed_per_hour":"",status:1};
+  url={"domain_name":"","url":"","speed_per_hour":"",status:1};
   totalusers = 0
   constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe,) {
     }
   ngOnInit() {
   
 }
-addDomain(){
-    if(!this.user.domain_name){
-        alert("Please Enter Domain name")
-    }
-    // else if(!this.user.url){
-    //     alert("Please Enter url")
-    // }
-    else if(!this.user.speed_per_hour){
-        alert("Please Enter the Speed")
-    }else{
-        this.user.status = 1;
-        this.apiservice.addDomain(this.user).subscribe((data:any)=>{
-            if(data.data){
-                alert("Domain Added Sucessfully")
-                this.route.navigateByUrl('/domain')
-            }
-        },error=>{
-           alert(error.error.data);
-        })
-    }
+
+addUrl() {
+  if (!this.url.url) {
+      alert("Please Enter Url name")
+  } else {
+      this.url.status = 1;
+      this.apiservice.addUrl(this.url).subscribe((data: any) => {
+          if (data.data) {
+              alert("Url Added Sucessfully")
+              this.route.navigateByUrl('/url')
+          }
+      }, error => {
+         // console.log(error);
+          alert(error.error.data);
+      })
+  }
 }
+
 }

@@ -41,7 +41,6 @@ export class UsersComponent implements OnInit {
       this.tabledata = data.data;
     // }
   },error=>{
-      console.log(error);
      alert(error.error.data);
   })
 }

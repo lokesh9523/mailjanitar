@@ -79,7 +79,7 @@
             <button type="button" class="btn btn-sm btn-primary" *ngIf="rowData.email_cleaned == rowData.email_count"
               [disabled]="rowData.email_cleaned == rowData.email_count" style="cursor: default">Cleaned</button>
             <button type="button" class="btn btn-sm btn-primary" *ngIf="rowData.email_cleaned != rowData.email_count"
-              (click)="selectCarWithButton(rowData)" disabled>Clean</button>
+              (click)="selectCarWithButton(rowData)">Clean</button>
 
             <!-- <button type="button" *ngIf="rowData.stopcleaning" class="btn btn-sm btn-primary"  style="float: right;"
               (click)="Cleandata(rowdata)">stop</button> -->

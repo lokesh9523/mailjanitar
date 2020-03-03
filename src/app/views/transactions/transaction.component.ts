@@ -36,7 +36,6 @@ export class TransactionComponent implements OnInit {
       this.Transactiondata = data.data;
     // }
   },error=>{
-      console.log(error);
      alert(error.error.data);
   })
 }

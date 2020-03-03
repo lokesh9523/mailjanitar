@@ -27,7 +27,6 @@ export class AccountComponent implements OnInit {
   this.apiservice.getUserdetails(this.localstorage.get('login_id')).subscribe((data:any)=>{
     if(data){
       this.user = data.data;
-      console.log(this.user);
     }
   },error=>{
     alert(error.error.data);

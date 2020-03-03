@@ -6,6 +6,7 @@ import { LocalStorageService } from 'ngx-store';
 import { DatePipe } from '@angular/common';
 import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { default as config } from './../../views/config';
+import { element } from 'protractor';
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css']
@@ -20,11 +21,12 @@ export class DashboardComponent implements OnInit {
     //{header:""}
   ];
   tabledata = [];
+  tabledatatemp = [];
   credits = '';
   showupload: boolean = false;
   display: boolean = false;
   stopcleaning:boolean = false;
-  dialogdata = {"email_cleaned":"","id":"","login_id":"","credits":"","email_count":""};
+  dialogdata = {"email_cleaned":"","id":"","login_id":"","credits":"","email_count":"","status":""};
   cleaningdata = [];
   value: number = 0;
   showconform:boolean = false;
@@ -50,15 +52,17 @@ export class DashboardComponent implements OnInit {
         var wsdata = JSON.parse(e.data);
         // if(wsdata.method === 'Mailcleaning Completed' && parseInt(wsdata.login_id,10) === this.localstorage.get('login_id')){
         //   console.log("iam here");
-          if(wsdata.method === 'Mailcleaning Completed' && parseInt(wsdata.login_id,10) === this.localstorage.get('login_id') && wsdata.file_id == this.dialogdata.id.toString() ){
-            console.log("iam hereiiiiiiiiii")
-            this.dialogdata.email_cleaned = wsdata.mails_cleand;
-                     this.localstorage.set('credits',wsdata.credits);
-                   this.apiservice.count = wsdata.credits;
+          if(wsdata.method === 'Mailcleaning Completed' && parseInt(wsdata.login_id,10) === this.localstorage.get('login_id')  ){
+            this.tabledatatemp.forEach(element=>{
+              if(element.id == wsdata.file_id){
+                this.dialogdata = element;
+                this.dialogdata.email_cleaned = wsdata.mails_cleand;
+                this.dialogdata.status = wsdata.status;
+                this.localstorage.set('credits',wsdata.credits);
+                  this.apiservice.count = wsdata.credits;
+              }
+            })
           }
-        // }else{
-        //         alert(wsdata)
-        // }
       }
     }
 
@@ -74,6 +78,7 @@ export class DashboardComponent implements OnInit {
           }
         });
         this.tabledata = data.data;
+        this.tabledatatemp = data.data;
       } else {
         this.showupload = true;
       }
@@ -99,7 +104,7 @@ export class DashboardComponent implements OnInit {
           // element.stopcleaning = true
           let params = {"login_id":this.dialogdata.login_id,"file_id":this.dialogdata.id};
           this.apiservice.cleanMail(params).subscribe((cleanmail=>{
-
+              alert("Your status will be updated  once file is cleaned");
           }))
           // let interval = setInterval(() => {
           //   element.status = element.status + Math.floor(Math.random() * 10) + 1;

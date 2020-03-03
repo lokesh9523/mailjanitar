@@ -17,36 +17,34 @@ export class UpdateComponent implements OnInit {
 
         //{header:""}
     ];
-    domain_id
-    user;
+    url_id
+    url;
     domain
     totalusers = 0
     constructor(public apiservice: ApiService, public route: Router, public localstorage: LocalStorageService, private datepipe: DatePipe, public activatedroute: ActivatedRoute) {
     }
     ngOnInit() {
         this.activatedroute.params.subscribe(params => {
-            this.domain_id = params['id'];
-            if (this.domain_id) {
-                this.getDomain(this.domain_id);
+            this.url_id = params['id'];
+            if (this.url_id) {
+                this.getUrl(this.url_id);
             }
         });
     }
-    getDomain(domainId) {
-        this.apiservice.getDomainById(domainId).subscribe((data: any) => {
-            this.user = data.data
+    getUrl(domainId) {
+        this.apiservice.geturlById(domainId).subscribe((data: any) => {
+            this.url = data.data
         })
     }
-    updateDomain() {
-        if (!this.user.domain_name) {
-            alert("Please Enter Domain name")
-        }else if (!this.user.speed_per_hour) {
-            alert("Please Enter the Speed")
-        } else {
-            if(this.user.status == 0 || this.user.status ==1){
-                this.apiservice.updateDomain(this.user, this.domain_id).subscribe((data: any) => {
+    updateUrl() {
+        if (!this.url.url) {
+            alert("Please Enter url name")
+        }  else {
+            if(this.url.status == 0 || this.url.status ==1){
+                this.apiservice.updateUrl(this.url, this.url_id).subscribe((data: any) => {
                     if (data.data) {
-                        alert("Domain Updated Sucessfully");
-                        this.route.navigateByUrl('/domain')
+                        alert("Url Updated Sucessfully");
+                        this.route.navigateByUrl('/url')
                     }
                 })
             }else{

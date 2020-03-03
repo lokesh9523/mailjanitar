@@ -62,10 +62,8 @@ export class DetailsComponent implements OnInit {
 }
 getUserDetails(user_id){
     this.apiservice.getUserHistory(user_id).subscribe((data:any)=>{
-        console.log(data.data);
         this.user = data.data[0];
         this.Transactiondata = this.user.ether_transcations;
-        console.log(this.Transactiondata)
     })
 }
 }

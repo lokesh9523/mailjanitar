@@ -22,7 +22,6 @@ export class DefaultLayoutComponent {
   public showaddedcredits;
   private changes: MutationObserver;
   constructor(public localstorageservice: LocalStorageService, public apiService: ApiService, public router: Router) {
-    console.log("iamhere,")
     this.credits = this.localstorageservice.get('credits');
     this.username = this.localstorageservice.get('username');
     this.role = this.localstorageservice.get('role');
@@ -64,7 +63,7 @@ export class DefaultLayoutComponent {
 
     connection.onmessage = (e) => {
       if (e.data) {
-        console.log(e.data,"=======================");
+        // console.log(e.data,"=======================");
         this.apiService.wsSubject.next(e.data);
         // this.apiService.getUserdetails(this.localstorageservice.get('login_id')).subscribe((partnerdata:any)=>{
         //   if(partnerdata){

@@ -90,6 +90,10 @@ export const routes: Routes = [
       {
         path:'domain',
         loadChildren:()=>import('./views/domain/domain.module').then(m=>m.DomainModule)
+      },
+      {
+        path:'url',
+        loadChildren:()=>import('./views/url/url.module').then(m=>m.DomainModule)
       }
      
     ]
