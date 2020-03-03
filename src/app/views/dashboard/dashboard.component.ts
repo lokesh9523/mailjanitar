@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   cleaningdata = [];
   value: number = 0;
   showconform:boolean = false;
+  deletefiledata;
   @ViewChild(ModalDirective) modal: ModalDirective;
   constructor(public apiservice: ApiService, public route: Router, public localstorage: LocalStorageService, private datepipe: DatePipe, ) {
   }
@@ -47,16 +48,17 @@ export class DashboardComponent implements OnInit {
     connection.onmessage = (e) => {
       if (e.data) {
         var wsdata = JSON.parse(e.data);
-        console.log(typeof wsdata.file_id )
-        console.log(this.dialogdata)
-        console.log(wsdata.file_id,'====',this.dialogdata.id)
-        if(wsdata.method === 'Mailcleaning' && parseInt(wsdata.login_id,10) === this.localstorage.get('login_id') && wsdata.file_id == this.dialogdata.id.toString() ){
-          console.log("iam here in offfff")
-          this.dialogdata.email_cleaned = wsdata.mails_cleand;
-          console.log(this.dialogdata.email_cleaned,"====================");
-                   this.localstorage.set('credits',wsdata.credits);
-                 this.apiservice.count = wsdata.credits;
-        }
+        // if(wsdata.method === 'Mailcleaning Completed' && parseInt(wsdata.login_id,10) === this.localstorage.get('login_id')){
+        //   console.log("iam here");
+          if(wsdata.method === 'Mailcleaning Completed' && parseInt(wsdata.login_id,10) === this.localstorage.get('login_id') && wsdata.file_id == this.dialogdata.id.toString() ){
+            console.log("iam hereiiiiiiiiii")
+            this.dialogdata.email_cleaned = wsdata.mails_cleand;
+                     this.localstorage.set('credits',wsdata.credits);
+                   this.apiservice.count = wsdata.credits;
+          }
+        // }else{
+        //         alert(wsdata)
+        // }
       }
     }
 
@@ -128,22 +130,25 @@ export class DashboardComponent implements OnInit {
     }
 
   }
-  DeleteFile(rowdata) {
-    this.showconform = true;
-    this.modal.show();
-
-  //   this.apiservice.deleteUserData(rowdata.login_id,rowdata.id).subscribe((data:any)=>{
-  //         if(data.data){
-  //          alert("File has been deleted sucessfully");
-  //           this.PartnerData();
-  //         }
-  //       })
+  DeleteFile() {
+    this.modal.hide();
+    this.apiservice.deleteUserData(this.deletefiledata.login_id,this.deletefiledata.id).subscribe((data:any)=>{
+          if(data.data){
+           alert("File has been deleted sucessfully");
+            this.PartnerData();
+          }
+        })
    }
    cancelFile(){
      this.showconform = false;
      this.modal.hide();
    }
+   conformDeleteFile(rowdata){
 
+    this.showconform = true;
+    this.modal.show();
+    this.deletefiledata = rowdata;
+   }
    Stopcleaning(){
     this.stopcleaning = false;;
    }
