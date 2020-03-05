@@ -7,6 +7,9 @@ import { DatePipe } from '@angular/common';
 import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { default as config } from './../../views/config';
 import { element } from 'protractor';
+declare var require: any
+const FileSaver = require('file-saver');
+
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css']
@@ -156,5 +159,9 @@ export class DashboardComponent implements OnInit {
    }
    Stopcleaning(){
     this.stopcleaning = false;;
+   }
+   downloadfile(rowdata){
+     var url = config.API_URL + '/' + rowdata.url
+     FileSaver.saveAs(url,rowdata.name)
    }
 }
