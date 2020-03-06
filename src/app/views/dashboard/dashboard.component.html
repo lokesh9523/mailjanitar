@@ -65,9 +65,9 @@
             {{rowData.email_cleaned}}/{{rowData[col.field]}}
           </span>
           <span *ngIf="idx==3">
-            <i *ngIf="rowData.email_cleaned == rowData.email_count" (click)="downloadfile(rowData)" class="fa fa-download"></i>
+            <i *ngIf="rowData.status == 100" (click)="downloadfile(rowData)" class="fa fa-download"></i>
             <!-- <p *ngIf = "rowData['col.field'] != 100">{{rowData[col.field]}}</p> -->
-            <p-progressBar *ngIf="rowData.email_cleaned != rowData.email_count" [value]="rowData[col.field]">
+            <p-progressBar *ngIf="rowData.status != 100" [value]="rowData[col.field]">
             </p-progressBar>
             <!-- <p><ngb-progressbar type="success" value = "rowData['col.field']    "></ngb-progressbar></p> -->
             <!-- <div class="progress">
