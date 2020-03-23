@@ -1,5 +1,5 @@
-<span>Total Users:{{totalusers}}</span>
-
+<span style="padding-bottom: 4px;text-align: center;">Total Users:{{totalusers}}</span>
+<div style="padding-bottom: 2px;"></div>
 <p-table #dt1 [columns]="cols" [value]="tabledata" [paginator]="true" [rows]="10" dataKey="vin"
     [resizableColumns]="true" [reorderableColumns]="true" >
     <ng-template pTemplate="header" let-columns >
@@ -32,7 +32,7 @@
                 
             </td>
             <td style="text-align:center">
-              <button type="button" class="btn btn-primary">view</button>
+              <button type="button" class="btn btn-primary" routerLink="/users/{{rowData.id}}">view</button>
                 <!-- <i class="pi pi-trash" (click)="DeleteFile(rowData)" style="cursor: pointer;"></i> -->
             </td>
         </tr>

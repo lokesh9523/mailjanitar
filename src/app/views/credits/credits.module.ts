@@ -10,6 +10,7 @@ import { TableModule } from 'primeng/table';
 import { QRCodeModule } from 'angularx-qrcode';
 import {DialogModule} from 'primeng/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ButtonsModule.forRoot(),
     QRCodeModule,
     DialogModule,
-    ModalModule
+    ModalModule,
+    ClipboardModule
   ],
   declarations: [ CreditComponent ]
 })

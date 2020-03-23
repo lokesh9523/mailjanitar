@@ -64,7 +64,7 @@ OnLogin(){
         this.localstorage.set('token',data.data.token);
         this.localstorage.set('role',data.data.partner_role.role.name);
         if(data.data.partner_role.role.name === "admin"){
-          this.router.navigateByUrl('/partners');
+          this.router.navigateByUrl('/users');
 
         }else{
           this.router.navigateByUrl('/MyList');

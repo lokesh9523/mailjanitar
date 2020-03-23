@@ -35,7 +35,8 @@
         <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-dark">42</span></a>
         <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
         <div class="divider"></div>-->
-        <a class="dropdown-item" [routerLink]="['/myaccount']" ><i class="fa fa-user"></i> My account</a> 
+        <a class="dropdown-item" [routerLink]="['/myaccount']" ><i class="fa fa-user"></i> My account</a>
+        <a class = "dropdown-item" *ngIf="!showcredits" [routerLink]="['/transaction']" ><i class="fa fa-user"></i> My Transaction</a> 
         <a class="dropdown-item" (click)="logout()" style="cursor:pointer"><i class="fa fa-lock"></i> Logout</a>
       </div>
     </li>
@@ -48,7 +49,7 @@
   </app-sidebar>
   <!-- Main content -->
   <main class="main" style="background-color:#ebebeb">
-    <div *ngIf="showalert" class="alert alert-success mt-3" style="width: 25%;position: absolute; right: 0;"  role="alert">
+    <div *ngIf="showalert" class="alert alert-success mt-" style="width: 25%;position: absolute; right: 0;"  role="alert">
       {{showaddedcredits}}  Credits Added to your account 
     </div>
     <!-- Breadcrumb -->

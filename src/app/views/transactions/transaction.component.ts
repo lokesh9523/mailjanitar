@@ -8,42 +8,34 @@ import { LocalStorageService } from 'ngx-store';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  templateUrl: 'partner.component.html'
+  templateUrl: 'transaction.component.html'
 })
-export class PartnerComponent implements OnInit {
+export class TransactionComponent implements OnInit {
   cols = [
     // {header:"Sno",field:"id"},
-    {header:"Username",field:"username"},
-    { header: "Email", field: "email" },
-    { header: "Credits", field: "amount" },
+    {header:"Transaction hash",field:"transcation_hash",width: '40%'},
+    { header: "From", field: "from_address",width: '25%' },
+    { header: "To", field: "to_address",width: '25%' },
+   {header:"Value",field:"value",width: '10%'},
+    // {header:"Time Stamp",field:"time_stamp",width: '20%'},
+    // {header:"Block No",filed:"block_number"}
     
     //{header:""}
   ];
-  tabledata = [];
-  user;
-  totalusers = 0
+  Transactiondata = [];
+  Transaction;
+  totaltransaction = 0
   constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe,) {
     }
   ngOnInit() {
-  this.apiservice.getAllPartners().subscribe((data:any)=>{
+  this.apiservice.getAllTransaction().subscribe((data:any)=>{
     // if(data){
-      this.user = data.data;
-      this.totalusers = data.data.length;
-      data.data.forEach(element => {
-        element.amount = 0
-        console.log(element);
-        if(element.partner_detail){
-          if(element.partner_detail.amount){
-            element.amount = element.partner_detail.amount;
-          }
-        }
-        
-      });
-      this.tabledata = data.data;
-      console.log(this.user);
+      this.Transaction = data.data;
+      this.totaltransaction = data.data.length;
+      
+      this.Transactiondata = data.data;
     // }
   },error=>{
-      console.log(error);
      alert(error.error.data);
   })
 }

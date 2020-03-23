@@ -1,0 +1,34 @@
+<div class="animated fadeIn" >
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header" style="font-weight: bold;">
+          Add Url
+        </div>
+        <div class="card-body" >
+
+          <div class="form-group row">
+            <div class="col-sm-6 mb-2">
+              <label>Url</label>
+              <input type="text" class="form-control" [(ngModel)]="url.url" >
+            </div>
+            
+            <div class="col-sm-6">
+              <label>Status</label>
+              <input type="text" class="form-control" [(ngModel)]="url.status"  >
+            </div>
+           
+         
+        </div>
+        <div class="form-group form-actions">
+          <button type="submit" class="btn btn-sm btn-primary" style="float: right;"
+            (click)="addUrl()">Add</button>
+            <!-- <button type="submit" class="btn btn-sm btn-primary" style="float:left"
+            (click)="cancelUrl()">cancel</button> -->
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+</div>

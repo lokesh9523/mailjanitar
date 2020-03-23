@@ -16,7 +16,12 @@
           </div>
             <div class="col-sm-4">
               <div class="form-group text-center">
-                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode><label class="d-block">Scan QR</label>
+                <!-- <button ngxClipboard [cbContent]="'target string'">Copy</button> -->
+                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                <div class="row d-block mx-auto">
+                <span>0x5498Ab05F638Cc1d66758aAB127cd2FEEF3baFaf</span><img ngxClipboard [cbContent]="'0x5498Ab05F638Cc1d66758aAB127cd2FEEF3baFaf'" src="../../../assets/document.svg" height="14" class="ml-2 mt-1" style="cursor: pointer" alt="">
+              </div>
+              <label class="d-block">Scan QR</label>
                 <!-- <label for="name">Jan</label> <span>(1JAN = 1000 credits)</span>{{credits * 1000}}
                 <input type="number" class="form-control" id="name" placeholder="Enter the jan" [(ngModel)]="credits"> -->
               </div>
@@ -49,7 +54,7 @@
                 <label for="name">Account Number</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter the ethereum account" [(ngModel)]="accountnumber" >
               </div>
-              <button type="button" class="btn btn-sm btn-primary" style="float: right;" (click)="Addaccount(rowdata)">Add</button>
+              <button type="button" class="btn btn-sm btn-primary" style="float: right;" (click)="Addaccount()">Add</button>
               <div style="color: red;">
                 {{message}}
               </div>

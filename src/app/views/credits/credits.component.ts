@@ -4,6 +4,7 @@ import {ApiService} from './../../api.service';
 import { LocalStorageService } from 'ngx-store';
 import{ default as config} from './../../views/config'
 import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
+import { ClipboardService } from 'ngx-clipboard';
 @Component({
   templateUrl: 'credits.component.html'
 })
@@ -16,7 +17,7 @@ export class CreditComponent implements OnInit {
     
     //{header:""}
   ];
-  credits = '';
+  credits = 0;
   message;
   accountnumber = '';
   tabledata = [];
@@ -28,7 +29,7 @@ export class CreditComponent implements OnInit {
     this.myAngularxQrCode = config.ADDRESS;
     }
   ngOnInit() {
-    this.apiservice.getPartnerDetails(this.localstorageservice.get('login_id')).subscribe((data:any)=>{
+    this.apiservice.getUserdetails(this.localstorageservice.get('login_id')).subscribe((data:any)=>{
       if(data){
        if(!data.data.partner_detail.ether_account){
          this.modal.show();
@@ -48,7 +49,6 @@ if(!this.credits){
   let credit = +this.credits + this.localstorageservice.get('credits');
   let data = {"amount":credit,"login_id":this.localstorageservice.get('login_id')}
   this.apiservice.depositeJan(data).subscribe((updateddata:any)=>{
-      console.log(updateddata,"=============")
       if(updateddata){
         
          alert("you will get an alert once you complete the transcation from your mobile");

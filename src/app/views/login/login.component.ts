@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
       let logindata = {"username":this.Username,"password":this.Password};
       this.apiservice.Login(logindata).subscribe((data:any)=>{
         if(data){
-          console.log(data);
           this.localstorage.set('isLogin','true');
           this.localstorage.set('name',data.data.name);
           this.localstorage.set('login_id',data.data.id);
