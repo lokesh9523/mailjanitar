@@ -12,7 +12,7 @@ export class DomainComponent implements OnInit {
   cols = [
      {header:"Id",field:"id"},
     {header:"Domain Name",field:"domain_name"},
-    // { header: "Url", field: "url" },
+     { header: "Mx Server", field: "mx_server" },
     { header: "Speed/Hour", field: "speed_per_hour" },
     {header:"Status",field:"status"}
     

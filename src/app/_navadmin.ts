@@ -20,6 +20,11 @@ export const navAdminItems: INavData[] = [
     name:'Urls',
     url:'/url',
     icon:'icon-user'
+  },
+  {
+    name:'Spam',
+    url:'/spam',
+    icon:'icon-user'
   }
 //   {
 //     name:'My Account',
