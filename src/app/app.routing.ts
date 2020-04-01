@@ -94,6 +94,10 @@ export const routes: Routes = [
       {
         path:'url',
         loadChildren:()=>import('./views/url/url.module').then(m=>m.DomainModule)
+      },
+      {
+        path:'spam',
+        loadChildren:()=>import('./views/antispam/antispam.module').then(m=>m.AntispamModule)
       }
      
     ]

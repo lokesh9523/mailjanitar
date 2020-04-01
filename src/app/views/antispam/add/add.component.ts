@@ -11,16 +11,9 @@ import { DatePipe } from '@angular/common';
   templateUrl: 'add.component.html'
 })
 export class AddComponent implements OnInit {
-  cols = [
-    // {header:"Sno",field:"id"},
-    {header:"Username",field:"username"},
-    { header: "Email", field: "email" },
-    { header: "Credits", field: "amount" },
-    
-    //{header:""}
-  ];
+ 
   tabledata = [];
-  user={"domain_name":"","mx_server":"","speed_per_hour":"",status:1};
+  user={"name":"","reason":"",status:1};
   totalusers = 0
   constructor(public apiservice:ApiService,public route:Router,public localstorage:LocalStorageService,private datepipe: DatePipe,) {
     }
@@ -28,20 +21,18 @@ export class AddComponent implements OnInit {
   
 }
 addDomain(){
-    if(!this.user.domain_name){
-        alert("Please Enter Domain name")
+    if(!this.user.name){
+        alert("Please Enter name")
     }
-     else if(!this.user.mx_server){
-         alert("Please Enter mx server")
-     }
-    else if(!this.user.speed_per_hour){
-        alert("Please Enter the Speed")
+     
+    else if(!this.user.reason){
+        alert("Please Enter the reason")
     }else{
         this.user.status = 1;
-        this.apiservice.addDomain(this.user).subscribe((data:any)=>{
+        this.apiservice.addSpam(this.user).subscribe((data:any)=>{
             if(data.data){
-                alert("Domain Added Sucessfully")
-                this.route.navigateByUrl('/domain')
+                alert("Spam Added Sucessfully")
+                this.route.navigateByUrl('/spam')
             }
         },error=>{
            alert(error.error.data);

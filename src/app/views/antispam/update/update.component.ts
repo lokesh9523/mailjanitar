@@ -9,15 +9,8 @@ import { DatePipe } from '@angular/common';
     templateUrl: 'update.component.html'
 })
 export class UpdateComponent implements OnInit {
-    cols = [
-        // {header:"Sno",field:"id"},
-        { header: "Username", field: "username" },
-        { header: "Email", field: "email" },
-        { header: "Credits", field: "amount" },
 
-        //{header:""}
-    ];
-    domain_id
+    spam_id
     user;
     domain
     totalusers = 0
@@ -25,31 +18,29 @@ export class UpdateComponent implements OnInit {
     }
     ngOnInit() {
         this.activatedroute.params.subscribe(params => {
-            this.domain_id = params['id'];
-            if (this.domain_id) {
-                this.getDomain(this.domain_id);
+            this.spam_id = params['id'];
+            if (this.spam_id) {
+                this.getDomain(this.spam_id);
             }
         });
     }
     getDomain(domainId) {
-        this.apiservice.getDomainById(domainId).subscribe((data: any) => {
+        this.apiservice.getSpamById(domainId).subscribe((data: any) => {
             this.user = data.data
         })
     }
     updateDomain() {
-        if (!this.user.domain_name) {
-            alert("Please Enter Domain name")
-        } if (!this.user.speed_per_hour) {
-            alert("Please Enter the Speed")
-        }  if (!this.user.mx_server) {
-            alert("Please Enter the mx server")
-        }
+        if (!this.user.name) {
+            alert("Please Enter  name")
+        } if (!this.user.reason) {
+            alert("Please Enter the reason")
+        }  
         else {
             if(this.user.status == 0 || this.user.status ==1){
-                this.apiservice.updateDomain(this.user, this.domain_id).subscribe((data: any) => {
+                this.apiservice.updateSpam(this.user, this.spam_id).subscribe((data: any) => {
                     if (data.data) {
-                        alert("Domain Updated Sucessfully");
-                        this.route.navigateByUrl('/domain')
+                        alert("spam Updated Sucessfully");
+                        this.route.navigateByUrl('/spam')
                     }
                 })
             }else{

@@ -152,4 +152,20 @@ export class ApiService implements OnInit {
     let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
     return this.httpClient.get(`${this.API_URL}/url/`+id, { headers: headers });
   }
+  addSpam(data){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.post(`${this.API_URL}/spam`, data, { headers: headers });
+  }
+  updateSpam(data,id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.put(`${this.API_URL}/spam/`+id, data, { headers: headers });
+  }
+  getAllSpam(){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/spam`, { headers: headers });
+  }
+  getSpamById(id){
+    let headers = new HttpHeaders({ 'authorization': this.localstorageservice.get('token') });
+    return this.httpClient.get(`${this.API_URL}/spam/`+id, { headers: headers });
+  }
 }
